@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
         //현재 카메라는 플레이어에 속해있음. 상대적인 좌표 사용을 위해 position이 아닌 localPosition 사용
     }
 
-    // Update is called once per frame
     void Update()
     {
         IsGround();
