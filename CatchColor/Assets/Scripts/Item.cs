@@ -9,7 +9,4 @@ public class Item : ScriptableObject
     public MyColor itemColor;
     public Sprite itemImage;
     public GameObject itemPrefab;
-
-
-
 }

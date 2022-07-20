@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class ItemController : MonoBehaviour
 {
     [SerializeField]
+    private PlayerController player;
+
+    [SerializeField]
     private float range; //»πµÊ ∞°¥…«— ∞≈∏Æ
 
     private bool pickupActivated = false;
@@ -15,7 +18,7 @@ public class ItemController : MonoBehaviour
     private LayerMask layerMask; //æ∆¿Ã≈€ ∑π¿ÃæÓø°∏∏ π›¿¿«œµµ∑œ
 
     [SerializeField]
-    private Text text;
+    private Text textItemInfo;
 
     void Update()
     {
@@ -37,9 +40,16 @@ public class ItemController : MonoBehaviour
         {
             if(hitInfo.transform != null)
             {
-                Debug.Log(hitInfo.transform.GetComponent<ItemPickup>().item.itemName + " »πµÊ«‘");
+                string itemName = hitInfo.transform.GetComponent<ItemPickup>().item.itemName;
+                Debug.Log(itemName + " »πµÊ«‘");
+                
+                if (itemName.Equals("Red")) player.MyColor = MyColor.Red;
+                else if (itemName.Equals("Green")) player.MyColor = MyColor.Green;
+                else if (itemName.Equals("Blue")) player.MyColor = MyColor.Blue;
+                player.SetTextColor();
+
                 Destroy(hitInfo.transform.gameObject);
-                InfoDisappear();
+                DisappearItemInfo();
             }
         }
     }
@@ -47,24 +57,24 @@ public class ItemController : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, range, layerMask))
         {
-            if (hitInfo.transform.tag == "Item") ItemInfoAppear();
+            if (hitInfo.transform.tag == "Item") AppearItemInfo();
            
         }
         else
         {
-            InfoDisappear();
+            DisappearItemInfo();
         }
     }
-    private void ItemInfoAppear()
+    private void AppearItemInfo()
     {
         pickupActivated = true;
-        text.gameObject.SetActive(true);
-        text.text = hitInfo.transform.GetComponent<ItemPickup>().item.itemName +" »πµÊ"+"<color=yellow>"+"(E)" +"</color>";
+        textItemInfo.gameObject.SetActive(true);
+        textItemInfo.text = hitInfo.transform.GetComponent<ItemPickup>().item.itemName +" »πµÊ"+"<color=yellow>"+"(E)" +"</color>";
     }
 
-    private void InfoDisappear()
+    private void DisappearItemInfo()
     {
         pickupActivated = false;
-        text.gameObject.SetActive(false);
+        textItemInfo.gameObject.SetActive(false);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,8 +15,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float jumpForce;
-
-    private float originPosY;
 
     //상태 변수
     private bool isWalk = false;
@@ -33,12 +32,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float cameraRatationLimit; //제한
     private float currentCameraRotationX = 0; //정면
-
+    //private float originPosY;
     //필요한 컴포넌트
     [SerializeField]
     private Camera cam;
     private Rigidbody myRigid;
     private CapsuleCollider myCollider;
+
+    [SerializeField]
+    private Text textColor;
+
+    public MyColor MyColor { get; set; }
 
     void Start()
     {
@@ -47,7 +51,7 @@ public class PlayerController : MonoBehaviour
       
         //초기화
         currentSpeed = walkSpeed;
-        originPosY = cam.transform.localPosition.y; //originPosY = transform.position.y;이 아님!! 얘가 바뀌면 플레이어가 땅에 꺼짐.
+        //originPosY = cam.transform.localPosition.y; //originPosY = transform.position.y;이 아님!! 얘가 바뀌면 플레이어가 땅에 꺼짐.
         //현재 카메라는 플레이어에 속해있음. 상대적인 좌표 사용을 위해 position이 아닌 localPosition 사용
     }
 
@@ -60,6 +64,11 @@ public class PlayerController : MonoBehaviour
         MoveCheck();
         CameraRotation();
         CharacterRotation();
+    }
+
+    public void SetTextColor()
+    {
+        textColor.text = MyColor.ToString();
     }
 
     private void IsGround()
