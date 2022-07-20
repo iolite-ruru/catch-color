@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    RunagateItem item;
+    public Item item;
+
 }

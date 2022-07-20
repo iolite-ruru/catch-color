@@ -95,12 +95,14 @@ public class PlayerController : MonoBehaviour
     private void Running()
     {
         isRun = true;
+        isWalk = false;
         currentSpeed = runSpeed;
     }
     //달리기 취소
     private void RunningCancel()
     {
         isRun = false;
+        isWalk = true;
         currentSpeed = walkSpeed;
     }
 
@@ -115,8 +117,8 @@ public class PlayerController : MonoBehaviour
 
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * currentSpeed;
 
-        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
-        //Time.deltaTime(약 0.016) 사용 이유=> 표준화 위함
+        myRigid.MovePosition(transform.position + _velocity * Time.smoothDeltaTime);
+        //Time.deltaTime(약 0.016)
     }
     private void MoveCheck()
     {
