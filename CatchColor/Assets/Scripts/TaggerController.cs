@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TaggerController : PlayerController
 {
-    [SerializeField]
-    private int currentColor;
 
     void Start()
     {
@@ -15,5 +13,15 @@ public class TaggerController : PlayerController
     void Update()
     {
         
+    }
+
+    private void TryAttack()
+    {
+
+    }
+
+    private void Attack()
+    {
+
     }
 }
