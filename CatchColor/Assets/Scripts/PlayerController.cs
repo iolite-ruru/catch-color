@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //플레이어 기본 정보
+    public int id;
+    public new string name;
+
+    //색깔 관련 변수
+    public MyColor myColor;
+    public Color color;
+
     //스피드 조정 변수
     [SerializeField]
     private float walkSpeed;
@@ -17,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
 
     //상태 변수
-    private bool isWalk = false;
+    //private bool isWalk = false;
     private bool isRun = false;
     private bool isGround = true;
 
@@ -28,31 +36,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float lookSensitivity;
 
-    //카메라 각도 제한
+    //카메라
     [SerializeField]
-    private float cameraRatationLimit; //제한
+    private float cameraRatationLimit; //x축 기준 움직임 제한(상하)
     private float currentCameraRotationX = 0; //정면
-    //private float originPosY;
+
     //필요한 컴포넌트
     [SerializeField]
     private Camera cam;
     private Rigidbody myRigid;
     private CapsuleCollider myCollider;
+    private MeshRenderer[] myMesh = new MeshRenderer[2];
 
+    //UI 컴포넌트
     [SerializeField]
     private Text textColor;
 
-    public MyColor MyColor { get; set; }
-
     void Start()
     {
+        cam = GetComponentInChildren<Camera>();
         myCollider = GetComponent<CapsuleCollider>();
         myRigid = GetComponent<Rigidbody>();
-      
-        //초기화
+        myMesh[0] = GetComponent<MeshRenderer>();
+        myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
+        //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
+
         currentSpeed = walkSpeed;
-        //originPosY = cam.transform.localPosition.y; //originPosY = transform.position.y;이 아님!! 얘가 바뀌면 플레이어가 땅에 꺼짐.
-        //현재 카메라는 플레이어에 속해있음. 상대적인 좌표 사용을 위해 position이 아닌 localPosition 사용
+        color = Color.white;
+        SetTextColor();
+
     }
 
     void Update()
@@ -68,7 +80,9 @@ public class PlayerController : MonoBehaviour
 
     public void SetTextColor()
     {
-        textColor.text = MyColor.ToString();
+        myMesh[0].materials[0].color = color; //플레이어 모델 색상 변경
+        myMesh[1].materials[0].color = color;
+        textColor.text = myColor.ToString(); //UI 출력
     }
 
     private void IsGround()
@@ -104,14 +118,14 @@ public class PlayerController : MonoBehaviour
     private void Running()
     {
         isRun = true;
-        isWalk = false;
+        //isWalk = false;
         currentSpeed = runSpeed;
     }
     //달리기 취소
     private void RunningCancel()
     {
         isRun = false;
-        isWalk = true;
+        //isWalk = true;
         currentSpeed = walkSpeed;
     }
 
@@ -133,8 +147,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!isRun && isGround)
         {
-            if (Vector3.Distance(lastPos, transform.position) >= 0.01f) isWalk = true;
-            else isWalk = false;
+            //if (Vector3.Distance(lastPos, transform.position) >= 0.01f) isWalk = true;
+            //else isWalk = false;
             lastPos = transform.position;
 
         }
