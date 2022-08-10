@@ -10,4 +10,10 @@ public class CreateRoom : MonoBehaviour
         var manager = NetworkManager.singleton;
         manager.StartHost();
     }
+
+    public void EnterRoomF()
+    {
+        var manager = NetworkManager.singleton;
+        manager.StartClient();
+    }
 }

@@ -47,18 +47,18 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\RoomPlayer.cs" />
      <Compile Include="Assets\Scripts\ItemPickup.cs" />
      <Compile Include="Assets\Scripts\ItemController.cs" />
      <Compile Include="Assets\Scripts\Item.cs" />
+     <Compile Include="Assets\Scripts\CreateRoom.cs" />
+     <Compile Include="Assets\Scripts\NetworkManager.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Define.cs" />
      <Compile Include="Assets\Scripts\time.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\TaggerController.cs" />
      <Compile Include="Assets\Scripts\RunagateController.cs" />
-     <Compile Include="Assets\Scripts\NetworkManager.cs" />
-     <Compile Include="Assets\Scripts\RoomPlayer.cs" />
-     <Compile Include="Assets\Scripts\CreateRoom.cs" />
      <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
      <None Include="Assets\ScriptTemplates\56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" />
      <None Include="Assets\Mirror\Version.txt" />
@@ -293,17 +293,17 @@
  <Reference Include="UnityEditor.UnityConnectModule">
  <HintPath>C:/unity/2020.3.32f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
  </Reference>
- <Reference Include="Mono.CecilX">
- <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
- </Reference>
  <Reference Include="Mono.CecilX.Rocks">
  <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
  </Reference>
- <Reference Include="Mono.CecilX.Mdb">
- <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
- </Reference>
  <Reference Include="Mono.CecilX.Pdb">
  <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.CecilX">
+ <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.CecilX.Mdb">
+ <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/unity/2020.3.32f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -682,6 +682,11 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Mirror.csproj">
+      <Project>{AC11D7BC-BEB4-226D-E4EE-F679E9443951}</Project>
+      <Name>Mirror</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
     <ProjectReference Include="kcp2k.csproj">
       <Project>{E0DAC3C4-8812-9A7F-E57A-BA2BBC7C1B4B}</Project>
       <Name>kcp2k</Name>
@@ -690,21 +695,6 @@
     <ProjectReference Include="Mirror.Editor.csproj">
       <Project>{AD42945D-956F-A738-B3AB-3E2DB6842C8C}</Project>
       <Name>Mirror.Editor</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="where-allocations.csproj">
-      <Project>{BE14717D-8055-D194-8332-8E2B9D3BF212}</Project>
-      <Name>where-allocations</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Telepathy.csproj">
-      <Project>{C6F3B34D-01B3-C316-CEE1-426DDF569E36}</Project>
-      <Name>Telepathy</Name>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-    <ProjectReference Include="Mirror.Components.csproj">
-      <Project>{933CAFF9-CC5F-6E20-A3C2-A3AE95150997}</Project>
-      <Name>Mirror.Components</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="Mirror.Examples.csproj">
@@ -722,14 +712,24 @@
       <Name>Mirror.Authenticators</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="Mirror.csproj">
-      <Project>{AC11D7BC-BEB4-226D-E4EE-F679E9443951}</Project>
-      <Name>Mirror</Name>
+    <ProjectReference Include="Telepathy.csproj">
+      <Project>{C6F3B34D-01B3-C316-CEE1-426DDF569E36}</Project>
+      <Name>Telepathy</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="where-allocations.csproj">
+      <Project>{BE14717D-8055-D194-8332-8E2B9D3BF212}</Project>
+      <Name>where-allocations</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="SimpleWebTransport.csproj">
       <Project>{760FAE9C-AC6E-B339-212B-D321874179AE}</Project>
       <Name>SimpleWebTransport</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="Mirror.Components.csproj">
+      <Project>{933CAFF9-CC5F-6E20-A3C2-A3AE95150997}</Project>
+      <Name>Mirror.Components</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>

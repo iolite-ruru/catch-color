@@ -47,22 +47,22 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\ThreadFunctions.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Empty\Logger.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\EventType.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Utils.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Pool.cs" />
      <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Empty\Message.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Empty\SafeQueue.cs" />
      <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Log.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\ConnectionState.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\NetworkStreamExtensions.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Empty\ThreadExtensions.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Empty\Logger.cs" />
      <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Common.cs" />
      <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\MagnificentSendPipe.cs" />
      <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Server.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\NetworkStreamExtensions.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\ConnectionState.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\MagnificentReceivePipe.cs" />
-     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Empty\ThreadExtensions.cs" />
      <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Client.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\ThreadFunctions.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\EventType.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Utils.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Pool.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Empty\SafeQueue.cs" />
+     <Compile Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\MagnificentReceivePipe.cs" />
      <None Include="Assets\Mirror\Runtime\Transports\Telepathy\Telepathy\Telepathy.asmdef" />
  <Reference Include="UnityEngine">
  <HintPath>C:/unity/2020.3.32f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -292,8 +292,14 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>C:/unity/2020.3.32f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Mono.CecilX.Rocks">
+ <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.Plastic.Newtonsoft.Json">
  <HintPath>C:/Project/catch-color/CatchColor/Library/PackageCache/com.unity.collab-proxy@1.15.13/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.CecilX.Pdb">
+ <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Plastic.Antlr3.Runtime">
  <HintPath>C:/Project/catch-color/CatchColor/Library/PackageCache/com.unity.collab-proxy@1.15.13/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll</HintPath>
@@ -301,20 +307,14 @@
  <Reference Include="unityplastic">
  <HintPath>C:/Project/catch-color/CatchColor/Library/PackageCache/com.unity.collab-proxy@1.15.13/Lib/Editor/PlasticSCM/unityplastic.dll</HintPath>
  </Reference>
- <Reference Include="log4netPlastic">
- <HintPath>C:/Project/catch-color/CatchColor/Library/PackageCache/com.unity.collab-proxy@1.15.13/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
- </Reference>
  <Reference Include="Mono.CecilX">
  <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.dll</HintPath>
  </Reference>
- <Reference Include="Mono.CecilX.Rocks">
- <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Rocks.dll</HintPath>
+ <Reference Include="log4netPlastic">
+ <HintPath>C:/Project/catch-color/CatchColor/Library/PackageCache/com.unity.collab-proxy@1.15.13/Lib/Editor/PlasticSCM/log4netPlastic.dll</HintPath>
  </Reference>
  <Reference Include="Mono.CecilX.Mdb">
  <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Mdb.dll</HintPath>
- </Reference>
- <Reference Include="Mono.CecilX.Pdb">
- <HintPath>C:/Project/catch-color/CatchColor/Assets/Mirror/Plugins/Mono.Cecil/Mono.CecilX.Pdb.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/unity/2020.3.32f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
