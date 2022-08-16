@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     //플레이어 기본 정보
     public int id;
@@ -42,7 +43,7 @@ public class PlayerController : MonoBehaviour
     private float currentCameraRotationX = 0; //정면
 
     //필요한 컴포넌트
-    [SerializeField]
+    //[SerializeField]
     private Camera cam;
     private Rigidbody myRigid;
     private CapsuleCollider myCollider;
@@ -54,28 +55,39 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        cam = GetComponentInChildren<Camera>();
-        myCollider = GetComponent<CapsuleCollider>();
-        myRigid = GetComponent<Rigidbody>();
-        myMesh[0] = GetComponent<MeshRenderer>();
-        myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
-        //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
+        if (hasAuthority)
+        {
+            cam = Camera.main;
+            cam.transform.SetParent(transform);
+            cam.transform.localPosition = new Vector3(0f,1f,0f);
 
-        currentSpeed = walkSpeed;
-        color = Color.white;
-        SetTextColor();
+            myCollider = GetComponent<CapsuleCollider>();
+            myRigid = GetComponent<Rigidbody>();
+            myMesh[0] = GetComponent<MeshRenderer>();
+            myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
+                                                                                        //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
+
+            currentSpeed = walkSpeed;
+            color = Color.white;
+            SetTextColor();
+
+        }
 
     }
 
     void Update()
     {
-        IsGround();
-        TryJump();
-        TryRun();
-        Move();
-        MoveCheck();
-        CameraRotation();
-        CharacterRotation();
+        if (hasAuthority)
+        {
+            IsGround();
+            TryJump();
+            TryRun();
+            Move();
+            MoveCheck();
+            CameraRotation();
+            CharacterRotation();
+        }
+        
     }
 
     public void SetTextColor()
