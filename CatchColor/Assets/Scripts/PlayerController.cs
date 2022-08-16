@@ -59,13 +59,13 @@ public class PlayerController : NetworkBehaviour
         {
             cam = Camera.main;
             cam.transform.SetParent(transform);
-            cam.transform.localPosition = new Vector3(0f,1f,0f);
+            cam.transform.localPosition = new Vector3(0f, 1f, 0f);
 
             myCollider = GetComponent<CapsuleCollider>();
             myRigid = GetComponent<Rigidbody>();
             myMesh[0] = GetComponent<MeshRenderer>();
             myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
-           //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
+                                                                                        //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
 
             currentSpeed = walkSpeed;
             color = Color.white;
@@ -87,14 +87,19 @@ public class PlayerController : NetworkBehaviour
             CameraRotation();
             CharacterRotation();
         }
-        
+
     }
 
     public void SetTextColor()
     {
-        myMesh[0].materials[0].color = color; //플레이어 모델 색상 변경
-        myMesh[1].materials[0].color = color;
+        //myMesh[0].materials[0].color = color; //플레이어 모델 색상 변경
+        //myMesh[1].materials[0].color = color;
         textColor.text = myColor.ToString(); //UI 출력
+    }
+
+    public virtual void ChangeColor(int layerIndex)
+    {
+
     }
 
     protected void IsGround()

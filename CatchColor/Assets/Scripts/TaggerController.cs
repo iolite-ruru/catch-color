@@ -20,6 +20,13 @@ public class TaggerController : PlayerController
 
     }
 
+    public override void ChangeColor(int layerIndex)
+    {
+        //   cam.cullingMask = ~(1 << layerIndex);
+        //cam.cullingMask = 0;
+        cam.cullingMask = ~(1 << LayerMask.NameToLayer("Runnagate_Red"));
+    }
+
     private void TryAttack()
     {
 

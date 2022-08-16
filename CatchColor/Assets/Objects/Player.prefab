@@ -160,14 +160,14 @@ MonoBehaviour:
   syncInterval: 0.1
   id: 0
   name: 
-  myColor: 0
+  myColor: 1
   color: {r: 0, g: 0, b: 0, a: 0}
   walkSpeed: 3
   runSpeed: 10
   jumpForce: 5
   lookSensitivity: 3
   cameraRatationLimit: 360
-  textColor: {fileID: 0}
+  textColor: {fileID: 1858379427185727507}
 --- !u!114 &1858379427148695973
 MonoBehaviour:
   m_ObjectHideFlags: 0

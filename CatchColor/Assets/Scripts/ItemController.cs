@@ -15,7 +15,7 @@ public class ItemController : MonoBehaviour
     private RaycastHit hitInfo;
 
     [SerializeField]
-    private LayerMask layerMask; //아이템 레이어에만 반응하도록
+    private LayerMask itemLayerMask; //아이템 레이어에만 반응하도록
 
     [SerializeField]
     private Text textItemInfo;
@@ -26,6 +26,14 @@ public class ItemController : MonoBehaviour
         TryAction();
     }
 
+    private void SetPlayerColor(MyColor myColor, Color color)
+    {
+        player.myColor = myColor;
+        player.color = color;
+        Debug.Log("===" + ((int)myColor + 7));
+        player.ChangeColor((int)myColor + 7);
+    }
+
     private void TryAction()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -34,20 +42,16 @@ public class ItemController : MonoBehaviour
             CanPickUp();
         }
     }
-    private void SetPlayerColor(MyColor myColor, Color color)
-    {
-        player.myColor = myColor;
-        player.color = color;
-    }
+
     private void CanPickUp()
     {
         if (pickupActivated)
         {
-            if(hitInfo.transform != null)
+            if (hitInfo.transform != null)
             {
                 string itemName = hitInfo.transform.GetComponent<ItemPickup>().item.itemName;
                 Debug.Log(itemName + " 획득함");
-                
+
                 if (itemName.Equals("Red")) SetPlayerColor(MyColor.Red, Color.red);
                 else if (itemName.Equals("Green")) SetPlayerColor(MyColor.Green, Color.green);
                 else if (itemName.Equals("Blue")) SetPlayerColor(MyColor.Blue, Color.blue);
@@ -60,7 +64,7 @@ public class ItemController : MonoBehaviour
     }
     private void CheckItem()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, range, layerMask))
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, range, itemLayerMask))
         {
             if (hitInfo.transform.tag == "Item")
                 SetItemInfo(true);
@@ -70,7 +74,7 @@ public class ItemController : MonoBehaviour
             SetItemInfo(false);
         }
     }
-    
+
     private void SetItemInfo(bool flag)
     {
         if (flag)
