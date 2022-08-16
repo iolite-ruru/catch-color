@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1858379427148695976}
   - component: {fileID: 1858379427148695979}
   - component: {fileID: 1858379427148695972}
+  - component: {fileID: -3335638839436737867}
   - component: {fileID: 1858379427148695973}
   - component: {fileID: 1197071712330987943}
   - component: {fileID: 6497167752676483126}
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858379427148695978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c414800bdc04114088f715864ab4335, type: 3}
   m_Name: 
@@ -143,6 +144,30 @@ MonoBehaviour:
   lookSensitivity: 3
   cameraRatationLimit: 360
   textColor: {fileID: 1858379427185727507}
+--- !u!114 &-3335638839436737867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858379427148695978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f7b1caad1e1204da9283a068f89d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  id: 0
+  name: 
+  myColor: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  walkSpeed: 3
+  runSpeed: 10
+  jumpForce: 5
+  lookSensitivity: 3
+  cameraRatationLimit: 360
+  textColor: {fileID: 0}
 --- !u!114 &1858379427148695973
 MonoBehaviour:
   m_ObjectHideFlags: 0

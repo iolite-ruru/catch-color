@@ -44,10 +44,10 @@ public class PlayerController : NetworkBehaviour
 
     //필요한 컴포넌트
     //[SerializeField]
-    private Camera cam;
-    private Rigidbody myRigid;
-    private CapsuleCollider myCollider;
-    private MeshRenderer[] myMesh = new MeshRenderer[2];
+    protected Camera cam;
+    protected Rigidbody myRigid;
+    protected CapsuleCollider myCollider;
+    protected MeshRenderer[] myMesh = new MeshRenderer[2];
 
     //UI 컴포넌트
     [SerializeField]
@@ -65,7 +65,7 @@ public class PlayerController : NetworkBehaviour
             myRigid = GetComponent<Rigidbody>();
             myMesh[0] = GetComponent<MeshRenderer>();
             myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
-                                                                                        //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
+           //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
 
             currentSpeed = walkSpeed;
             color = Color.white;
@@ -97,25 +97,25 @@ public class PlayerController : NetworkBehaviour
         textColor.text = myColor.ToString(); //UI 출력
     }
 
-    private void IsGround()
+    protected void IsGround()
     {
         //여기서 -transfrom.up 을 쓰게 된다면 문제가 생김. 고정된 값인 벡터 사용할 것
         //(현재 위치, 목표 방향, 이동할 거리)
         isGround = Physics.Raycast(transform.position, Vector3.down, myCollider.bounds.extents.y + 0.1f);
     }
-    private void TryJump()
+    protected void TryJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             Jump();
         }
     }
-    private void Jump()
+    protected void Jump()
     {
         myRigid.velocity = transform.up * jumpForce;
     }
     //달리기 시도
-    private void TryRun()
+    protected void TryRun()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -127,14 +127,14 @@ public class PlayerController : NetworkBehaviour
         }
     }
     //달리기 실행
-    private void Running()
+    protected void Running()
     {
         isRun = true;
         //isWalk = false;
         currentSpeed = runSpeed;
     }
     //달리기 취소
-    private void RunningCancel()
+    protected void RunningCancel()
     {
         isRun = false;
         //isWalk = true;
@@ -142,7 +142,7 @@ public class PlayerController : NetworkBehaviour
     }
 
     //움직임 실행
-    private void Move()
+    protected void Move()
     {
         float _moveDirX = Input.GetAxisRaw("Horizontal");
         float _moveDirZ = Input.GetAxisRaw("Vertical");
@@ -155,7 +155,7 @@ public class PlayerController : NetworkBehaviour
         myRigid.MovePosition(transform.position + _velocity * Time.smoothDeltaTime);
         //Time.deltaTime(약 0.016)
     }
-    private void MoveCheck()
+    protected void MoveCheck()
     {
         if (!isRun && isGround)
         {
@@ -166,7 +166,7 @@ public class PlayerController : NetworkBehaviour
         }
 
     }
-    private void CameraRotation()
+    protected void CameraRotation()
     {
         //상하 카메라 회전
         float _xRotation = Input.GetAxisRaw("Mouse Y");
@@ -176,7 +176,7 @@ public class PlayerController : NetworkBehaviour
 
         cam.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
     }
-    private void CharacterRotation()
+    protected void CharacterRotation()
     {
         //좌우 캐릭터 회전
         float _yRotation = Input.GetAxisRaw("Mouse X");
