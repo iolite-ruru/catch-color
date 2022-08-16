@@ -182,9 +182,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1858379427148695972}
   range: 3
-  layerMask:
+  itemLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   textItemInfo: {fileID: 1858379428148460475}
 --- !u!143 &1197071712330987943
 CharacterController:

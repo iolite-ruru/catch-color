@@ -99,7 +99,9 @@ public class PlayerController : NetworkBehaviour
 
     public virtual void ChangeColor(int layerIndex)
     {
-
+        Debug.Log("===parent");
+        //cam.cullingMask = ~(1 << LayerMask.NameToLayer("Runnagate_Red"));
+        cam.cullingMask = ~(1 << layerIndex);
     }
 
     protected void IsGround()

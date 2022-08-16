@@ -969,9 +969,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1858379427242315176}
   range: 3
-  layerMask:
+  itemLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   textItemInfo: {fileID: 0}
 --- !u!33 &1858379427242315178
 MeshFilter:

@@ -31,7 +31,11 @@ public class ItemController : MonoBehaviour
         player.myColor = myColor;
         player.color = color;
         Debug.Log("===" + ((int)myColor + 7));
-        player.ChangeColor((int)myColor + 7);
+        //player.ChangeColor(7);
+        /*if (player is TaggerController)
+        {
+            ((TaggerController)player).ChangeColor(7);
+        }*/
     }
 
     private void TryAction()
