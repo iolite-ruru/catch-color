@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
 
-public class ItemController : MonoBehaviour
+public class ItemControllerRunagate : MonoBehaviour
 {
     [SerializeField]
-    private PlayerController player;
+    private RunagateController player;
 
     [SerializeField]
     private float range; //»πµÊ ∞°¥…«— ∞≈∏Æ
@@ -20,22 +20,25 @@ public class ItemController : MonoBehaviour
     [SerializeField]
     private Text textItemInfo;
 
+    Color color;
+
+    void Start()
+    {
+        SetPlayerColor(Random.Range(0, 3));
+    }
+
     void Update()
     {
         CheckItem();
         TryAction();
     }
 
-    private void SetPlayerColor(MyColor myColor, Color color)
+    private void SetPlayerColor(int idx)
     {
-        player.myColor = myColor;
-        player.color = color;
-        Debug.Log("===" + ((int)myColor + 7));
-        //player.ChangeColor(7);
-        /*if (player is TaggerController)
-        {
-            ((TaggerController)player).ChangeColor(7);
-        }*/
+        if(idx == 0) player.SetColor(MyColor.Red, Color.red);
+        else if(idx == 1) player.SetColor(MyColor.Green, Color.green);
+        else if (idx == 2) player.SetColor(MyColor.Blue, Color.blue);
+        player.SetLayer(idx + 7);
     }
 
     private void TryAction()
@@ -56,9 +59,9 @@ public class ItemController : MonoBehaviour
                 string itemName = hitInfo.transform.GetComponent<ItemPickup>().item.itemName;
                 Debug.Log(itemName + " »πµÊ«‘");
 
-                if (itemName.Equals("Red")) SetPlayerColor(MyColor.Red, Color.red);
-                else if (itemName.Equals("Green")) SetPlayerColor(MyColor.Green, Color.green);
-                else if (itemName.Equals("Blue")) SetPlayerColor(MyColor.Blue, Color.blue);
+                if (itemName.Equals("Red")) SetPlayerColor(0);
+                else if (itemName.Equals("Green")) SetPlayerColor(1);
+                else if (itemName.Equals("Blue")) SetPlayerColor(2);
                 player.SetTextColor();
 
                 Destroy(hitInfo.transform.gameObject);

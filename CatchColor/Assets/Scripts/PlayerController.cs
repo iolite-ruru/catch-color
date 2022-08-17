@@ -12,35 +12,35 @@ public class PlayerController : NetworkBehaviour
 
     //색깔 관련 변수
     public MyColor myColor;
-    public Color color;
+    //public Color color;
 
     //스피드 조정 변수
     [SerializeField]
-    private float walkSpeed;
+    protected float walkSpeed;
     [SerializeField]
-    private float runSpeed;
+    protected float runSpeed;
 
-    private float currentSpeed;
+    protected float currentSpeed;
 
     [SerializeField]
-    private float jumpForce;
+    protected float jumpForce;
 
     //상태 변수
     //private bool isWalk = false;
-    private bool isRun = false;
-    private bool isGround = true;
+    protected bool isRun = false;
+    protected bool isGround = true;
 
     //움직임 체크
-    private Vector3 lastPos;
+    protected Vector3 lastPos;
 
     //카메라 민감도
     [SerializeField]
-    private float lookSensitivity;
+    protected float lookSensitivity;
 
     //카메라
     [SerializeField]
-    private float cameraRatationLimit; //x축 기준 움직임 제한(상하)
-    private float currentCameraRotationX = 0; //정면
+    protected float cameraRatationLimit; //x축 기준 움직임 제한(상하)
+    protected float currentCameraRotationX = 0; //정면
 
     //필요한 컴포넌트
     //[SerializeField]
@@ -60,17 +60,17 @@ public class PlayerController : NetworkBehaviour
             cam = Camera.main;
             cam.transform.SetParent(transform);
             cam.transform.localPosition = new Vector3(0f, 1f, 0f);
-
+            //cam.cullingMask = ~(1 << 7);
+            //cam.cullingMask = ~(1<<LayerMask.NameToLayer("Runnagate_Red"));
             myCollider = GetComponent<CapsuleCollider>();
             myRigid = GetComponent<Rigidbody>();
             myMesh[0] = GetComponent<MeshRenderer>();
             myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
-                                                                                        //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
-
+            //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
+            
             currentSpeed = walkSpeed;
-            color = Color.white;
-            SetTextColor();
 
+            SetTextColor();
         }
 
     }
@@ -92,16 +92,7 @@ public class PlayerController : NetworkBehaviour
 
     public void SetTextColor()
     {
-        //myMesh[0].materials[0].color = color; //플레이어 모델 색상 변경
-        //myMesh[1].materials[0].color = color;
         textColor.text = myColor.ToString(); //UI 출력
-    }
-
-    public virtual void ChangeColor(int layerIndex)
-    {
-        Debug.Log("===parent");
-        //cam.cullingMask = ~(1 << LayerMask.NameToLayer("Runnagate_Red"));
-        cam.cullingMask = ~(1 << layerIndex);
     }
 
     protected void IsGround()

@@ -13,14 +13,12 @@ GameObject:
   - component: {fileID: 1858379427148695977}
   - component: {fileID: 1858379427148695976}
   - component: {fileID: 1858379427148695979}
-  - component: {fileID: 1858379427148695972}
   - component: {fileID: -3335638839436737867}
-  - component: {fileID: 1858379427148695973}
   - component: {fileID: 1197071712330987943}
   - component: {fileID: 6497167752676483126}
   - component: {fileID: 2455857813032443637}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_Tagger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,30 +118,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1858379427148695972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858379427148695978}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c414800bdc04114088f715864ab4335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  id: 0
-  name: 
-  myColor: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
-  walkSpeed: 3
-  runSpeed: 10
-  jumpForce: 5
-  lookSensitivity: 3
-  cameraRatationLimit: 360
-  textColor: {fileID: 1858379427185727507}
 --- !u!114 &-3335638839436737867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,24 +142,6 @@ MonoBehaviour:
   lookSensitivity: 3
   cameraRatationLimit: 360
   textColor: {fileID: 1858379427185727507}
---- !u!114 &1858379427148695973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858379427148695978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cdf3be4e20780a4090b3168fd413517, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1858379427148695972}
-  range: 3
-  itemLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  textItemInfo: {fileID: 1858379428148460475}
 --- !u!143 &1197071712330987943
 CharacterController:
   m_ObjectHideFlags: 0

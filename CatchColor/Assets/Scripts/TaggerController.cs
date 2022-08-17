@@ -9,6 +9,7 @@ public class TaggerController : PlayerController
     {
         if (hasAuthority)
         {
+            //TryAttack();
             IsGround();
             TryJump();
             TryRun();
@@ -16,20 +17,14 @@ public class TaggerController : PlayerController
             MoveCheck();
             CameraRotation();
             CharacterRotation();
-           /* if (Input.GetKey(KeyCode.LeftShift))
-            {
-                ChangeColor(7);
-            }*/
         }
 
     }
 
-    public override void ChangeColor(int layerIndex)
+    public void ChangeColor(int layerIndex)
     {
-           cam.cullingMask = ~(1 << layerIndex);
-        //cam.cullingMask = 0;
-        Debug.Log("===child");
-        //cam.cullingMask = ~(1 << LayerMask.NameToLayer("Runnagate_Red"));
+        cam.cullingMask = ~(1 << layerIndex);
+        Debug.Log("===child(Tagger)");
     }
 
     private void TryAttack()
