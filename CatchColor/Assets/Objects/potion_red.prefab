@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 495413762057138827}
   - component: {fileID: 569082633780340818}
   - component: {fileID: -2958789973730351557}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: potion_red
   m_TagString: Item
   m_Icon: {fileID: 0}
