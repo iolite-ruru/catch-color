@@ -14,7 +14,7 @@ public class RunagateController : PlayerController
             myCollider = GetComponent<CapsuleCollider>();
             myRigid = GetComponent<Rigidbody>();
             myMesh[0] = GetComponent<MeshRenderer>();
-            myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
+            //myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
             //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
 
             currentSpeed = walkSpeed;
