@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class TaggerController : PlayerController
 {
-    [SerializeField]
-    private AttackController attackController;
+    //[SerializeField]
+    //private AttackController attackController;
 
     private bool isAttack = false;
     private bool isSwing = false;
+
+    public float range;
+    public float damage;
+    public float attackDelay;
+    public float attackDelayA;
+    public float attackDelayB;
 
     private RaycastHit hitInfo;
 
@@ -49,16 +55,16 @@ public class TaggerController : PlayerController
     {
         isAttack = true;
 
-        yield return new WaitForSeconds(attackController.attackDelayA);
+        yield return new WaitForSeconds(attackDelayA);
         isSwing = true;
 
         // 공격 활성화 시점
         StartCoroutine(HitCoroutine());
 
-        yield return new WaitForSeconds(attackController.attackDelayB);
+        yield return new WaitForSeconds(attackDelayB);
         isSwing = false;
 
-        yield return new WaitForSeconds(attackController.attackDelay - attackController.attackDelayA - attackController.attackDelayB);
+        yield return new WaitForSeconds(attackDelay - attackDelayA - attackDelayB);
         
         isAttack = false;
     }
@@ -78,7 +84,7 @@ public class TaggerController : PlayerController
     
     private bool ChecekObject()
     {
-        if(Physics.Raycast(transform.position, transform.forward, out hitInfo, attackController.range)){
+        if(Physics.Raycast(transform.position, transform.forward, out hitInfo, range)){
             return true;
         }
         return false;
