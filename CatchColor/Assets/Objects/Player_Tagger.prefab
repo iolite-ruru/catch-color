@@ -141,7 +141,7 @@ MonoBehaviour:
   lookSensitivity: 3
   cameraRatationLimit: 360
   textColor: {fileID: 1858379427185727507}
-  attackController: {fileID: 0}
+  attackController: {fileID: 2143760272368343702}
 --- !u!143 &1197071712330987943
 CharacterController:
   m_ObjectHideFlags: 0
@@ -483,13 +483,14 @@ GameObject:
   - component: {fileID: 1858379428194995803}
   - component: {fileID: 1858379428194995802}
   - component: {fileID: 1858379428194995805}
+  - component: {fileID: 2143760272368343702}
   m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1858379428194995804
 Transform:
   m_ObjectHideFlags: 0
@@ -567,3 +568,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2143760272368343702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858379428194995807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b328b6139e56604c987a8963735f897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 2
+  damage: 1
+  attackDelay: 1
+  attackDelayA: 0.5
+  attackDelayB: 0.1
