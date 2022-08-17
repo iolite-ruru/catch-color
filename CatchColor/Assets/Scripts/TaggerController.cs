@@ -73,7 +73,7 @@ public class TaggerController : PlayerController
     {
         while (isSwing)
         {
-            if (ChecekObject())
+            if (CheckObject())
             {
                 isSwing = false;
                 Debug.Log("==Ãæµ¹: " + hitInfo.transform.name);
@@ -82,7 +82,7 @@ public class TaggerController : PlayerController
         }
     }
     
-    private bool ChecekObject()
+    private bool CheckObject()
     {
         if(Physics.Raycast(transform.position, transform.forward, out hitInfo, range)){
             return true;
@@ -90,8 +90,4 @@ public class TaggerController : PlayerController
         return false;
     }
 
-    private void Attack()
-    {
-
-    }
 }
