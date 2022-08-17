@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class TaggerController : PlayerController
 {
+    [SerializeField]
+    private AttackController attackController;
+
+    private bool isAttack = false;
+    private bool isSwing = false;
+
+    private RaycastHit hitInfo;
 
     void Update()
     {
         if (hasAuthority)
         {
-            //TryAttack();
+            TryAttack();
             IsGround();
             TryJump();
             TryRun();
@@ -29,7 +36,52 @@ public class TaggerController : PlayerController
 
     private void TryAttack()
     {
+        if (Input.GetButton("Fire1"))
+        {
+            if (!isAttack)
+            {
+                StartCoroutine(AttackCoroutine());
+            }
+        }
+    }
 
+    IEnumerator AttackCoroutine()
+    {
+        isAttack = true;
+
+        yield return new WaitForSeconds(attackController.attackDelayA);
+        isSwing = true;
+
+        // 공격 활성화 시점
+
+
+        yield return new WaitForSeconds(attackController.attackDelayB);
+        isSwing = false;
+
+        yield return new WaitForSeconds(attackController.attackDelay - attackController.attackDelayA - attackController.attackDelayB);
+        
+        isAttack = false;
+    }
+
+    IEnumerator HitCoroutine()
+    {
+        while (isSwing)
+        {
+            if (ChecekObject())
+            {
+                isSwing = false;
+                Debug.Log("==충돌: " + hitInfo.transform.name);
+            }
+            yield return null;
+        }
+    }
+    
+    private bool ChecekObject()
+    {
+        if(Physics.Raycast(transform.position, transform.forward, out hitInfo, attackController.range)){
+            return true;
+        }
+        return false;
     }
 
     private void Attack()

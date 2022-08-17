@@ -141,6 +141,7 @@ MonoBehaviour:
   lookSensitivity: 3
   cameraRatationLimit: 360
   textColor: {fileID: 1858379427185727507}
+  attackController: {fileID: 0}
 --- !u!143 &1197071712330987943
 CharacterController:
   m_ObjectHideFlags: 0
