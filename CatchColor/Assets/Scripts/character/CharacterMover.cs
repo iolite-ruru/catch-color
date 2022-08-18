@@ -1,22 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Mirror;
+using UnityEngine.UI;
 
-public class PlayerController : NetworkBehaviour
+public class CharacterMover : NetworkBehaviour
 {
-
-
-    //플레이어 기본 정보
-    public int id;
-    public new string name;
-
-    //색깔 관련 변수
-    [SyncVar]
-    public MyColor myColor;
-    //public Color color;
-
     //스피드 조정 변수
     [SerializeField]
     protected float walkSpeed;
@@ -50,11 +39,31 @@ public class PlayerController : NetworkBehaviour
     protected Camera cam;
     protected Rigidbody myRigid;
     protected CapsuleCollider myCollider;
-    protected MeshRenderer[] myMesh = new MeshRenderer[2];
 
-    //UI 컴포넌트
+    //색상관련
+    Renderer renderer;
+    [SyncVar(hook =nameof(SetPlayerColor_Hook))]
+    public MyColor playerColor;
+    public void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    {
+        if (renderer == null)
+        {
+            renderer = gameObject.GetComponent<Renderer>();
+        }
+        renderer.material.color = Define.GetColor(newColor);
+
+    }
+
+    //닉네임
+    [SyncVar (hook =nameof(SetNickname_Hook))]
+    public string nickname;
     [SerializeField]
-    private Text textColor;
+    private Text nicknameText;
+    public void SetNickname_Hook(string _, string value)
+    {
+        nicknameText.text = value;
+    }
+
 
     void Start()
     {
@@ -67,13 +76,12 @@ public class PlayerController : NetworkBehaviour
             //cam.cullingMask = ~(1<<LayerMask.NameToLayer("Runnagate_Red"));
             myCollider = GetComponent<CapsuleCollider>();
             myRigid = GetComponent<Rigidbody>();
-            myMesh[0] = GetComponent<MeshRenderer>();
-            myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
-            //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
-            
+                                                       
             currentSpeed = walkSpeed;
 
-            SetTextColor();
+            renderer = gameObject.GetComponent<Renderer>();
+            renderer.material.color = Define.GetColor(playerColor);
+
         }
 
     }
@@ -93,10 +101,6 @@ public class PlayerController : NetworkBehaviour
 
     }
 
-    public void SetTextColor()
-    {
-        textColor.text = myColor.ToString(); //UI 출력
-    }
 
     protected void IsGround()
     {
@@ -154,7 +158,14 @@ public class PlayerController : NetworkBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * currentSpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.smoothDeltaTime);
-        //Time.deltaTime(약 0.016)
+
+        if (transform.localScale.x < 0)
+        {
+            nicknameText.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }else if (transform.localScale.x > 0)
+        {
+            nicknameText.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
     protected void MoveCheck()
     {

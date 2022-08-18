@@ -1,19 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using UnityEngine.UI;
 
 public class CreateRoom : MonoBehaviour
 {
+    [SerializeField]
+    private InputField nicknameInputField;
+
+    
     public void CreateRoomF()
     {
-        var manager = NetworkManager.singleton;
-        manager.StartHost();
+        if (nicknameInputField.text != "")
+        {
+            PlayerSettings.nickname = nicknameInputField.text;
+            var manager = NetworkManager.singleton;
+            manager.StartHost();
+        }
+        else
+        {
+            //nicknameInputField.GetComponent<Animator>().SetTrigger("on");
+        }
+       
     }
 
     public void EnterRoomF()
     {
-        var manager = NetworkManager.singleton;
-        manager.StartClient();
+        
+        if (nicknameInputField.text != "")
+        {
+            PlayerSettings.nickname = nicknameInputField.text;
+            var manager = NetworkManager.singleton;
+            manager.StartClient();
+        }
+        else
+        {
+            //nicknameInputField.GetComponent<Animator>().SetTrigger("on");
+        }
     }
 }
