@@ -11,6 +11,7 @@ public class PlayerController : NetworkBehaviour
     public new string name;
 
     //색깔 관련 변수
+    [SyncVar]
     public MyColor myColor;
     //public Color color;
 
