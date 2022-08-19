@@ -58,7 +58,7 @@ public class CharacterMover : NetworkBehaviour
 
 
 
-    void Start()
+    public virtual void Start()
     {
         renderer = gameObject.GetComponent<Renderer>();
         renderer.material.color = Define.GetColor(playerColor);

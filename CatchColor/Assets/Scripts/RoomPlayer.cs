@@ -5,11 +5,31 @@ using Mirror;
 
 public class RoomPlayer : NetworkRoomPlayer
 {
+
     [SyncVar]
     public MyColor playerColor;
 
+    private static RoomPlayer myRoomPlayer;
+    public static RoomPlayer MyRoomPlayer
+    {
+        get {
+            if (myRoomPlayer == null)
+            {
+                var players=FindObjectsOfType<RoomPlayer>();
+                foreach(var player in players)
+                {
+                    if (player.hasAuthority)
+                    {
+                        myRoomPlayer = player;
+                    }
+                }
+            }
+            return myRoomPlayer; 
+        }
+    }
 
-    //public CharacterMover lobbyPlayerCharacter;
+
+    public CharacterMover lobbyPlayerCharacter;
 
     public void Start()
     {
