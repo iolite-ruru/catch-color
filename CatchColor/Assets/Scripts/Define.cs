@@ -15,7 +15,7 @@ public class Define
     {
         Color.red,
         Color.green,
-        Color.blue
+        Color.blue,
     };
 
     public static Color GetColor(MyColor color) { return colors[(int)color]; }

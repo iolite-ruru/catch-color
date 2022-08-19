@@ -5,37 +5,19 @@ using UnityEngine.UI;
 
 public class CreateRoom : MonoBehaviour
 {
-    [SerializeField]
-    private InputField nicknameInputField;
 
-    
     public void CreateRoomF()
     {
-        if (nicknameInputField.text != "")
-        {
-            PlayerSettings.nickname = nicknameInputField.text;
-            var manager = NetworkManager.singleton;
-            manager.StartHost();
-        }
-        else
-        {
-            //nicknameInputField.GetComponent<Animator>().SetTrigger("on");
-        }
-       
+        var manager = RoomManager.singleton;
+        manager.StartHost();
+
     }
 
     public void EnterRoomF()
     {
-        
-        if (nicknameInputField.text != "")
-        {
-            PlayerSettings.nickname = nicknameInputField.text;
-            var manager = NetworkManager.singleton;
-            manager.StartClient();
-        }
-        else
-        {
-            //nicknameInputField.GetComponent<Animator>().SetTrigger("on");
-        }
+
+        var manager = RoomManager.singleton;
+        manager.StartClient();
+
     }
 }

@@ -41,7 +41,8 @@ public class CharacterMover : NetworkBehaviour
     protected CapsuleCollider myCollider;
 
     //색상관련
-    Renderer renderer;
+    new Renderer renderer;
+
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
     public void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
@@ -54,24 +55,19 @@ public class CharacterMover : NetworkBehaviour
 
     }
 
-    //닉네임
-    [SyncVar (hook =nameof(SetNickname_Hook))]
-    public string nickname;
-    [SerializeField]
-    private Text nicknameText;
-    public void SetNickname_Hook(string _, string value)
-    {
-        nicknameText.text = value;
-    }
+
 
 
     void Start()
     {
+        renderer = gameObject.GetComponent<Renderer>();
+        renderer.material.color = Define.GetColor(playerColor);
+
         if (hasAuthority)
         {
-            cam = Camera.main;
-            cam.transform.SetParent(transform);
-            cam.transform.localPosition = new Vector3(0f, 1f, 0f);
+            //cam = Camera.main;
+            //cam.transform.SetParent(transform);
+            //cam.transform.localPosition = new Vector3(0f, 1f, 0f);
             //cam.cullingMask = ~(1 << 7);
             //cam.cullingMask = ~(1<<LayerMask.NameToLayer("Runnagate_Red"));
             myCollider = GetComponent<CapsuleCollider>();
@@ -79,8 +75,7 @@ public class CharacterMover : NetworkBehaviour
                                                        
             currentSpeed = walkSpeed;
 
-            renderer = gameObject.GetComponent<Renderer>();
-            renderer.material.color = Define.GetColor(playerColor);
+            
 
         }
 
@@ -158,14 +153,6 @@ public class CharacterMover : NetworkBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * currentSpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.smoothDeltaTime);
-
-        if (transform.localScale.x < 0)
-        {
-            nicknameText.transform.localScale = new Vector3(-1f, 1f, 1f);
-        }else if (transform.localScale.x > 0)
-        {
-            nicknameText.transform.localScale = new Vector3(1f, 1f, 1f);
-        }
     }
     protected void MoveCheck()
     {
