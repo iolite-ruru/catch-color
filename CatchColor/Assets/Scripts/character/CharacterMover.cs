@@ -6,6 +6,27 @@ using UnityEngine.UI;
 
 public class CharacterMover : NetworkBehaviour
 {
+    //현재 플레이어 캐릭터
+    private static CharacterMover myPlayer;
+    public static CharacterMover MyPlayer
+    {
+        get
+        {
+            if (myPlayer == null)
+            {
+                var players = FindObjectsOfType<CharacterMover>();
+                foreach (var player in players)
+                {
+                    if (player.hasAuthority)
+                    {
+                        myPlayer = player;
+                    }
+                }
+            }
+            return myPlayer;
+        }
+    }
+
     //스피드 조정 변수
     [SerializeField]
     protected float walkSpeed;
@@ -45,18 +66,20 @@ public class CharacterMover : NetworkBehaviour
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
-    public void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    public virtual void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
     {
         if (renderer == null)
         {
             renderer = gameObject.GetComponent<Renderer>();
         }
         renderer.material.color = Define.GetColor(newColor);
-
     }
 
-
-
+    [Command]
+    public void CmdSetColor(MyColor color)
+    {
+        playerColor = color;
+    }
 
     public virtual void Start()
     {
@@ -90,7 +113,7 @@ public class CharacterMover : NetworkBehaviour
             TryRun();
             Move();
             MoveCheck();
-            CameraRotation();
+            //CameraRotation();
             CharacterRotation();
         }
 

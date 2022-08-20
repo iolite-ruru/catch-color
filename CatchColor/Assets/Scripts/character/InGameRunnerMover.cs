@@ -2,6 +2,7 @@ using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameRunnerMover : CharacterMover
 {
@@ -16,12 +17,18 @@ public class InGameRunnerMover : CharacterMover
             cam.transform.SetParent(transform);
             cam.transform.localPosition = new Vector3(0f, 1f, 0f);
 
-            var myRoomPlayer = RoomPlayer.MyRoomPlayer;
 
+            
+            var myRoomPlayer = RoomPlayer.MyRoomPlayer;
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
+
+            GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
         }
     }
 
     [Command]
-    //https://youtu.be/OweqlUihHP0?list=PLYQHfkihy4Aw6QjsZqwwbD4ihpwvm7N0U&t=439
+    private void CmdSetPlayerCharacter(MyColor color)
+    {
+        playerColor = color;
+    }
 }
