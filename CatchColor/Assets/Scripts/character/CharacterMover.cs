@@ -1,21 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Mirror;
+using UnityEngine.UI;
 
-public class PlayerController : NetworkBehaviour
+public class CharacterMover : NetworkBehaviour
 {
-
-
-    //플레이어 기본 정보
-    public int id;
-    public new string name;
-
-    //색깔 관련 변수
-    [SyncVar]
-    public MyColor myColor;
-    //public Color color;
+    //현재 플레이어 캐릭터
+    private static CharacterMover myPlayer;
+    public static CharacterMover MyPlayer
+    {
+        get
+        {
+            if (myPlayer == null)
+            {
+                var players = FindObjectsOfType<CharacterMover>();
+                foreach (var player in players)
+                {
+                    if (player.hasAuthority)
+                    {
+                        myPlayer = player;
+                    }
+                }
+            }
+            return myPlayer;
+        }
+    }
 
     //스피드 조정 변수
     [SerializeField]
@@ -50,30 +60,46 @@ public class PlayerController : NetworkBehaviour
     protected Camera cam;
     protected Rigidbody myRigid;
     protected CapsuleCollider myCollider;
-    protected MeshRenderer[] myMesh = new MeshRenderer[2];
 
-    //UI 컴포넌트
-    [SerializeField]
-    private Text textColor;
+    //색상관련
+    new Renderer renderer;
 
-    void Start()
+    [SyncVar(hook =nameof(SetPlayerColor_Hook))]
+    public MyColor playerColor;
+    public virtual void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
     {
+        if (renderer == null)
+        {
+            renderer = gameObject.GetComponent<Renderer>();
+        }
+        renderer.material.color = Define.GetColor(newColor);
+    }
+
+    [Command]
+    public void CmdSetColor(MyColor color)
+    {
+        playerColor = color;
+    }
+
+    public virtual void Start()
+    {
+        renderer = gameObject.GetComponent<Renderer>();
+        renderer.material.color = Define.GetColor(playerColor);
+
         if (hasAuthority)
         {
-            cam = Camera.main;
-            cam.transform.SetParent(transform);
-            cam.transform.localPosition = new Vector3(0f, 1f, 0f);
+            //cam = Camera.main;
+            //cam.transform.SetParent(transform);
+            //cam.transform.localPosition = new Vector3(0f, 1f, 0f);
             //cam.cullingMask = ~(1 << 7);
             //cam.cullingMask = ~(1<<LayerMask.NameToLayer("Runnagate_Red"));
             myCollider = GetComponent<CapsuleCollider>();
             myRigid = GetComponent<Rigidbody>();
-            myMesh[0] = GetComponent<MeshRenderer>();
-            myMesh[1] = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>(); //오브젝트 계층 구조 변경 전
-            //myMesh[1] = transform.GetChild(1).GetComponent<MeshRenderer>(); //변경 후
-            
+                                                       
             currentSpeed = walkSpeed;
 
-            SetTextColor();
+            
+
         }
 
     }
@@ -87,16 +113,12 @@ public class PlayerController : NetworkBehaviour
             TryRun();
             Move();
             MoveCheck();
-            CameraRotation();
+            //CameraRotation();
             CharacterRotation();
         }
 
     }
 
-    public void SetTextColor()
-    {
-        textColor.text = myColor.ToString(); //UI 출력
-    }
 
     protected void IsGround()
     {
@@ -154,7 +176,6 @@ public class PlayerController : NetworkBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * currentSpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.smoothDeltaTime);
-        //Time.deltaTime(약 0.016)
     }
     protected void MoveCheck()
     {
