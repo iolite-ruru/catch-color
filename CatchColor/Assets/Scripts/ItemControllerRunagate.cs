@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using Mirror;
 
-public class ItemControllerRunagate : MonoBehaviour
+public class ItemControllerRunagate : NetworkBehaviour
 {
-    [SerializeField]
-    private RunagateController player;
+    //[SerializeField]
+    //private CharacterMover player;
 
     [SerializeField]
     private float range; //획득 가능한 거리
@@ -17,28 +18,30 @@ public class ItemControllerRunagate : MonoBehaviour
     [SerializeField]
     private LayerMask itemLayerMask; //아이템 레이어에만 반응하도록
 
-    [SerializeField]
     private Text textItemInfo;
-
-    Color color;
+    private Text textColor;
 
     void Start()
     {
-        SetPlayerColor(Random.Range(0, 3));
+        textItemInfo = GameObject.Find("TextItem").GetComponent<Text>();
+        textColor = GameObject.Find("TextColor").GetComponent<Text>();
+        //SetPlayerColor(Random.Range(0, 3));
     }
 
     void Update()
     {
         CheckItem();
         TryAction();
+
     }
 
-    private void SetPlayerColor(int idx)
+    private void SetColor(int idx)
     {
-        if(idx == 0) player.SetColor(MyColor.Red, Color.red);
-        else if(idx == 1) player.SetColor(MyColor.Green, Color.green);
-        else if (idx == 2) player.SetColor(MyColor.Blue, Color.blue);
-        player.SetLayer(idx + 7);
+        MyColor color;
+        if (idx == 0) color = MyColor.Red;
+        else if (idx == 1) color = MyColor.Green;
+        else color = MyColor.Blue;
+        CharacterMover.MyPlayer.CmdSetColor(color);
     }
 
     private void TryAction()
@@ -59,15 +62,22 @@ public class ItemControllerRunagate : MonoBehaviour
                 string itemName = hitInfo.transform.GetComponent<ItemPickup>().item.itemName;
                 Debug.Log(itemName + " 획득함");
 
-                if (itemName.Equals("Red")) SetPlayerColor(0);
-                else if (itemName.Equals("Green")) SetPlayerColor(1);
-                else if (itemName.Equals("Blue")) SetPlayerColor(2);
-                player.SetTextColor();
+                textColor.text = itemName;
+                if (itemName.Equals("Red")) SetColor(0);
+                else if (itemName.Equals("Green")) SetColor(1);
+                else if (itemName.Equals("Blue")) SetColor(2);
 
-                Destroy(hitInfo.transform.gameObject);
+                CmdDestroyItem();
+                //Destroy(hitInfo.transform.gameObject);
                 SetItemInfo(false);
             }
         }
+    }
+
+    [Command]
+    public void CmdDestroyItem()
+    {
+        NetworkServer.Destroy(hitInfo.transform.gameObject);
     }
     private void CheckItem()
     {

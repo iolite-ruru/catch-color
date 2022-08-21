@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1858379427148695977}
   - component: {fileID: 1858379427148695976}
   - component: {fileID: 1858379427148695979}
+  - component: {fileID: 1197071712330987943}
   - component: {fileID: 3099272186991055113}
   - component: {fileID: -3455251819818093998}
-  - component: {fileID: 1197071712330987943}
   - component: {fileID: 6497167752676483126}
   - component: {fileID: 2455857813032443637}
   m_Layer: 0
@@ -119,6 +119,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!143 &1197071712330987943
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858379427148695978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3099272186991055113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,24 +178,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   textItemInfo: {fileID: 1858379428148460475}
---- !u!143 &1197071712330987943
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858379427148695978}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6497167752676483126
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
+using UnityEngine.UI;
 
 public class CreateRoom : MonoBehaviour
 {
+
     public void CreateRoomF()
     {
-        var manager = NetworkManager.singleton;
+        var manager = RoomManager.singleton;
         manager.StartHost();
+
     }
 
     public void EnterRoomF()
     {
-        var manager = NetworkManager.singleton;
+
+        var manager = RoomManager.singleton;
         manager.StartClient();
+
     }
 }
