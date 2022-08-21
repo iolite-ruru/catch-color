@@ -28,7 +28,6 @@ public class CharacterMover : NetworkBehaviour
     }
 
 
-
     //스피드 조정 변수
     [SerializeField]
     protected float walkSpeed;

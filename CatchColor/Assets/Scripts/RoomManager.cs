@@ -45,9 +45,7 @@ public class RoomManager : NetworkRoomManager
         {
 
             Transform startPos = GetStartPosition();
-            gamePlayer = startPos != null
-                ? Instantiate(spawnPrefabs[1], startPos.position, startPos.rotation)
-                : Instantiate(spawnPrefabs[1], Vector3.zero, Quaternion.identity);
+            gamePlayer =  Instantiate(playerPrefab, new Vector3(0,1,0), Quaternion.identity);
         }
 
         if (!OnRoomServerSceneLoadedForPlayer(conn, roomPlayer, gamePlayer))
