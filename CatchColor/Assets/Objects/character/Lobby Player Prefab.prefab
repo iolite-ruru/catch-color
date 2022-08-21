@@ -279,15 +279,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 0.03
   walkSpeed: 3
   runSpeed: 6
   jumpForce: 4
   lookSensitivity: 3
   cameraRatationLimit: 360
   playerColor: 0
-  nickname: 
-  nicknameText: {fileID: 7000103217104571038}
 --- !u!1 &5012128844340607097
 GameObject:
   m_ObjectHideFlags: 0

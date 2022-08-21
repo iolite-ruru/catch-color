@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\character\InGameRunnerMover.cs" />
     <Compile Include="Assets\Scripts\TaggerController.cs" />
     <Compile Include="Assets\Scripts\RunagateController.cs" />
+    <Compile Include="Assets\Scripts\character\InGameTaggerMover.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />

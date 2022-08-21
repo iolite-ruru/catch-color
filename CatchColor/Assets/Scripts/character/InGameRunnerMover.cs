@@ -6,7 +6,23 @@ using UnityEngine.UI;
 
 public class InGameRunnerMover : CharacterMover
 {
-    // Start is called before the first frame update
+
+
+    [SyncVar(hook = nameof(SetPlayerState_Hook))]
+    public State playerState;
+    public void SetPlayerState_Hook(State _, State state)
+    {
+        playerState = state;
+        
+    }
+
+    [ClientRpc]
+    public void RpcRendererFalse()
+    {
+        renderer.enabled = false;
+    }
+
+
     public override void Start()
     {
         base.Start();
@@ -17,7 +33,7 @@ public class InGameRunnerMover : CharacterMover
             cam.transform.SetParent(transform);
             cam.transform.localPosition = new Vector3(0f, 1f, 0f);
 
-
+            playerState = State.Alive;
             
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
@@ -26,9 +42,15 @@ public class InGameRunnerMover : CharacterMover
         }
     }
 
-    [Command]
-    private void CmdSetPlayerCharacter(MyColor color)
+    public override void Update()
     {
-        playerColor = color;
+        base.Update();
+
+        if (hasAuthority)
+        {
+            CameraRotation();
+            CharacterRotation();
+        }
     }
+
 }
