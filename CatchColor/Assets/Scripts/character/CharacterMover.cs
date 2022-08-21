@@ -27,6 +27,8 @@ public class CharacterMover : NetworkBehaviour
         }
     }
 
+
+
     //스피드 조정 변수
     [SerializeField]
     protected float walkSpeed;
@@ -62,17 +64,17 @@ public class CharacterMover : NetworkBehaviour
     protected CapsuleCollider myCollider;
 
     //색상관련
-    new Renderer renderer;
+    protected new Renderer renderer;
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
-    public virtual void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    public void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
     {
         if (renderer == null)
         {
             renderer = gameObject.GetComponent<Renderer>();
         }
-        renderer.material.color = Define.GetColor(newColor);
+        renderer.material.color = PlayerColor.GetColor(newColor);
     }
 
     [Command]
@@ -84,7 +86,7 @@ public class CharacterMover : NetworkBehaviour
     public virtual void Start()
     {
         renderer = gameObject.GetComponent<Renderer>();
-        renderer.material.color = Define.GetColor(playerColor);
+        renderer.material.color = PlayerColor.GetColor(playerColor);
 
         if (hasAuthority)
         {
@@ -104,7 +106,7 @@ public class CharacterMover : NetworkBehaviour
 
     }
 
-    void Update()
+    public virtual void Update()
     {
         if (hasAuthority)
         {
@@ -114,7 +116,7 @@ public class CharacterMover : NetworkBehaviour
             Move();
             MoveCheck();
             //CameraRotation();
-            CharacterRotation();
+            //CharacterRotation();
         }
 
     }
@@ -205,5 +207,13 @@ public class CharacterMover : NetworkBehaviour
         Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity;
         myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
         //내부에서는 쿼터늄(4원소) 값으로 이루어짐. 우리가 보기 편하게 오일러(3원소) 값으로 표기함.
+    }
+
+
+    //색상 변경
+    [Command]
+    protected void CmdSetPlayerCharacter(MyColor color)
+    {
+        playerColor = color;
     }
 }
