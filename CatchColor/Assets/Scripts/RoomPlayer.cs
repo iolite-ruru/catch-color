@@ -51,6 +51,7 @@ public class RoomPlayer : NetworkRoomPlayer
         else color = MyColor.Blue;
         playerColor = color;
 
+
         var playerCharacter = Instantiate(RoomManager.singleton.spawnPrefabs[0]).GetComponent<CharacterMover>();
         NetworkServer.Spawn(playerCharacter.gameObject, connectionToClient);
         playerCharacter.playerColor = color;

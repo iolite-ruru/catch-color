@@ -229,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3901398653373926993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3867846, y: 2, z: 6.2233276}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3901398653373927008}
@@ -404,6 +404,7 @@ MonoBehaviour:
   lookSensitivity: 3
   cameraRatationLimit: 360
   playerColor: 0
+  playerState: 0
 --- !u!114 &1579666378139896319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,4 +423,3 @@ MonoBehaviour:
   itemLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  textItemInfo: {fileID: 0}
