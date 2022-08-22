@@ -85,7 +85,7 @@ public class CharacterMover : NetworkBehaviour
     public virtual void Start()
     {
         //Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.lockState = CursorLockMode.Confined;
 
         renderer = gameObject.GetComponent<Renderer>();
         renderer.material.color = PlayerColor.GetColor(playerColor);
