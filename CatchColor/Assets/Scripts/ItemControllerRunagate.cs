@@ -65,6 +65,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         {
             if (hitInfo.transform != null)
             {
+                
                 string itemName = hitInfo.transform.GetComponent<ItemPickup>().item.itemName;
                 Debug.Log(itemName + " »πµÊ«‘");
 
@@ -73,17 +74,24 @@ public class ItemControllerRunagate : NetworkBehaviour
                 else if (itemName.Equals("Green")) SetColor(1);
                 else if (itemName.Equals("Blue")) SetColor(2);
 
-                CmdDestroyItem();
+                TellServerToDestroyObject(hitInfo.transform.gameObject);
                 //Destroy(hitInfo.transform.gameObject);
                 SetItemInfo(false);
             }
         }
     }
 
-    [Command]
-    public void CmdDestroyItem()
+    [Client]
+    public void TellServerToDestroyObject(GameObject obj)
     {
-        NetworkServer.Destroy(hitInfo.transform.gameObject);
+        CmdDestroyItem(obj);
+    }
+
+    [Command]
+    public void CmdDestroyItem(GameObject obj)
+    {
+        if (!obj) return;
+        NetworkServer.Destroy(obj);
     }
     private void CheckItem()
     {
