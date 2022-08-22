@@ -306,9 +306,9 @@ MonoBehaviour:
   syncInterval: 0.1
   walkSpeed: 3
   runSpeed: 6
-  jumpForce: 4
+  jumpForce: 5
   lookSensitivity: 3
-  cameraRatationLimit: 360
+  cameraRatationLimit: 45
   playerColor: 0
   range: 3
   damage: 1

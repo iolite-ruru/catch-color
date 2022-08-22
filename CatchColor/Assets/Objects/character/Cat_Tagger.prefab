@@ -434,9 +434,9 @@ MonoBehaviour:
   range: 0
   itemLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  textItemInfo: {fileID: 0}
-  textColor: {fileID: 0}
+    m_Bits: 1024
+  textItemInfo: {fileID: 6004416269741898388}
+  textColor: {fileID: 4019843179020202068}
 --- !u!95 &-1242542869264417178
 Animator:
   serializedVersion: 3

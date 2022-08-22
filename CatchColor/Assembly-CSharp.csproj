@@ -71,8 +71,6 @@
     <Compile Include="Assets\Scripts\LobyUIManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\character\InGameRunnerMover.cs" />
-    <Compile Include="Assets\Scripts\TaggerController.cs" />
-    <Compile Include="Assets\Scripts\RunagateController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
