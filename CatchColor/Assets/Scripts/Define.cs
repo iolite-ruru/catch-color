@@ -34,3 +34,9 @@ public enum State
 }
 
 
+//¿ªÇÒ
+public enum Role
+{
+    Runner,
+    Tagger
+}

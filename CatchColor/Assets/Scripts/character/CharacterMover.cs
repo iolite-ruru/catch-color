@@ -60,7 +60,7 @@ public class CharacterMover : NetworkBehaviour
     //[SerializeField]
     protected Camera cam;
     protected Rigidbody myRigid;
-    protected CapsuleCollider myCollider;
+    protected BoxCollider myCollider;
 
     //색상관련
     protected new Renderer renderer;
@@ -73,7 +73,7 @@ public class CharacterMover : NetworkBehaviour
         {
             renderer = gameObject.GetComponent<Renderer>();
         }
-        renderer.material.color = PlayerColor.GetColor(newColor);
+        renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
     }
 
     [Command]
@@ -94,7 +94,7 @@ public class CharacterMover : NetworkBehaviour
             //cam.transform.localPosition = new Vector3(0f, 1f, 0f);
             //cam.cullingMask = ~(1 << 7);
             //cam.cullingMask = ~(1<<LayerMask.NameToLayer("Runnagate_Red"));
-            myCollider = GetComponent<CapsuleCollider>();
+            myCollider = GetComponent<BoxCollider>();
             myRigid = GetComponent<Rigidbody>();
                                                        
             currentSpeed = walkSpeed;
