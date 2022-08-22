@@ -13,6 +13,11 @@ public class LobyUIManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     [SerializeField]
     private Text playerCountText;
 
