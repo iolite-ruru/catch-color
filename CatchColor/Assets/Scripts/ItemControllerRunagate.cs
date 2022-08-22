@@ -18,20 +18,26 @@ public class ItemControllerRunagate : NetworkBehaviour
     [SerializeField]
     private LayerMask itemLayerMask; //아이템 레이어에만 반응하도록
 
+    [SerializeField]
     private Text textItemInfo;
+    [SerializeField]
     private Text textColor;
 
-    void Start()
+    private void Start()
     {
-        textItemInfo = GameObject.Find("TextItem").GetComponent<Text>();
-        textColor = GameObject.Find("TextColor").GetComponent<Text>();
-        //SetPlayerColor(Random.Range(0, 3));
+        if (!hasAuthority)
+        {
+            textColor.gameObject.SetActive(false);
+        }
     }
-
     void Update()
     {
-        CheckItem();
-        TryAction();
+        if (hasAuthority)
+        {
+            CheckItem();
+            TryAction();
+        }
+        
 
     }
 
