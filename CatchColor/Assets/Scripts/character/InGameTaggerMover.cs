@@ -17,7 +17,7 @@ public class InGameTaggerMover : CharacterMover
 
     private RaycastHit hitInfo;
 
-    InGameRunnerMover target;
+    GameObject target;
 
   
 
@@ -97,7 +97,7 @@ public class InGameTaggerMover : CharacterMover
 
                 Debug.Log("==충돌: " + hitInfo.transform.name);
 
-                CmdKillRunner();
+                TellServerToDestroyObject(target);
             }
             yield return null;
         }
@@ -110,19 +110,24 @@ public class InGameTaggerMover : CharacterMover
         //도망자만 죽게 바꿔야 함
         if (check&& hitInfo.transform.name == "Game Player Runagate")
         {
-            target = hitInfo.transform.gameObject.GetComponent<InGameRunnerMover>();
+            target = hitInfo.transform.gameObject;
             return true;
         }
         return false;
     }
 
+    [Client]
+    public void TellServerToDestroyObject(GameObject obj)
+    {
+        CmdKillRunner(obj);
+    }
+
     [Command]
-    public void CmdKillRunner()
+    public void CmdKillRunner(GameObject obj)
     {
         //객체 삭제가 아니라 관전 상태(투명)가 되게 바꿔야함
-        //NetworkServer.Destroy(hitInfo.transform.gameObject);
-        target.playerState = State.Dead;
-        target.RpcRendererFalse();
-        Debug.Log("죽음~~~ : " + target.playerState.ToString());
+        NetworkServer.Destroy(obj);
+        //target.playerState = State.Dead;
+        //target.RpcRendererFalse();
     }
 }
