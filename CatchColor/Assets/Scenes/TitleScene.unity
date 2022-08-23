@@ -943,7 +943,7 @@ MonoBehaviour:
   runInBackground: 1
   autoStartServerBuild: 1
   serverTickRate: 30
-  offlineScene: Assets/Scenes/TiitleScene.unity
+  offlineScene: Assets/Scenes/TitleScene.unity
   onlineScene: Assets/Scenes/WaitingRoomScene.unity
   transport: {fileID: 1323500557}
   networkAddress: localhost

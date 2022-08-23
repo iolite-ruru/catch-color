@@ -6,7 +6,7 @@ using Mirror;
 public class RoomManager : NetworkRoomManager {
 
     static int taggernum;
-    
+
     public override void Start()
     {
         base.Start();
@@ -73,4 +73,5 @@ public class RoomManager : NetworkRoomManager {
         // replace room player with game player
         NetworkServer.ReplacePlayerForConnection(conn, gamePlayer, true);
     }
+
 }
