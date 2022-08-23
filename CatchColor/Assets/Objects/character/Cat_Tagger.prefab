@@ -361,9 +361,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  anim: {fileID: -1242542869264417178}
   walkSpeed: 3
   runSpeed: 6
-  jumpForce: 4
+  jumpForce: 5
   lookSensitivity: 3
   cameraRatationLimit: 20
   playerColor: 0

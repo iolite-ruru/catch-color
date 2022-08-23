@@ -27,6 +27,7 @@ public class CharacterMover : NetworkBehaviour
         }
     }
 
+    public Animator anim;
 
     //스피드 조정 변수
     [SerializeField]
@@ -40,7 +41,7 @@ public class CharacterMover : NetworkBehaviour
     protected float jumpForce;
 
     //상태 변수
-    //private bool isWalk = false;
+    private bool isWalk = false;
     protected bool isRun = false;
     protected bool isGround = true;
 
@@ -157,14 +158,19 @@ public class CharacterMover : NetworkBehaviour
     protected void Running()
     {
         isRun = true;
-        //isWalk = false;
+        isWalk = false;
+        anim.SetBool("Run", isRun);
+        anim.SetBool("Walk", isWalk);
+
         currentSpeed = runSpeed;
     }
     //달리기 취소
     protected void RunningCancel()
     {
         isRun = false;
-        //isWalk = true;
+        isWalk = true;
+        anim.SetBool("Run", isRun);
+        anim.SetBool("Walk", isWalk);
         currentSpeed = walkSpeed;
     }
 
@@ -185,8 +191,9 @@ public class CharacterMover : NetworkBehaviour
     {
         if (!isRun && isGround)
         {
-            //if (Vector3.Distance(lastPos, transform.position) >= 0.01f) isWalk = true;
-            //else isWalk = false;
+            if (Vector3.Distance(lastPos, transform.position) >= 0.01f) isWalk = true;
+            else isWalk = false;
+            anim.SetBool("Walk", isWalk);
             lastPos = transform.position;
 
         }
