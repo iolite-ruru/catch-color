@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5722614825888861696}
   - component: {fileID: 3986998297451589827}
   - component: {fileID: 1531325545971379764}
+  - component: {fileID: -3245330032782991561}
   m_Layer: 0
   m_Name: Lobby Player Prefab
   m_TagString: Untagged
@@ -280,12 +281,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.03
+  anim: {fileID: -3245330032782991561}
   walkSpeed: 3
   runSpeed: 6
   jumpForce: 5
   lookSensitivity: 3
   cameraRatationLimit: 360
   playerColor: 0
+--- !u!95 &-3245330032782991561
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903559168064841628}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e1fba51196d89f4bb6f0d529e03c04e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5012128844340607097
 GameObject:
   m_ObjectHideFlags: 0
