@@ -1,13 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Mirror;
 
-public class time : MonoBehaviour
+public class time : NetworkBehaviour
 {
+    [SyncVar]
     public float LimitTime=180;
     public Text txt_Time;
     public GameObject backImg;
     public GameObject endTxt;
+    [SyncVar]
     public float waitTime = 10;
     public GameObject NextTxt;
     public Text NextTxt2;
@@ -20,7 +23,7 @@ public class time : MonoBehaviour
     }
     void Update()
     {
-        if (LimitTime > 0) { 
+        if (LimitTime > 1) { 
             LimitTime -= Time.deltaTime;
             if (Mathf.Round(LimitTime) > 60)
                 txt_Time.text = "남은 시간 : " + (int)(Mathf.Round(LimitTime)) / 60 + "분 " + (Mathf.Round(LimitTime)) % 60 + "초";
@@ -37,8 +40,17 @@ public class time : MonoBehaviour
             waitTime -= Time.deltaTime;
             if(waitTime <= 1)
             {
-                SceneManager.LoadScene("WaitingRoomScene");
+                Debug.Log("장면 전환!!!");
+                if (isServer)
+                {
+                    NetworkManager.singleton.StopHost();
+                }
             }
         }    
     }
+
+    
+
+
+    
 }
