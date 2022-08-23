@@ -16,8 +16,8 @@ public class InGameRunnerMover : CharacterMover
         if (hasAuthority)
         {
             isMovable = false;
-            cam.transform.localPosition = new Vector3(0f, 20f, 1f);
-            cam.transform.localRotation = Quaternion.Euler(50f,0f,0f);
+            cam.transform.position = new Vector3(0f, 20f, -10f);
+            cam.transform.rotation = Quaternion.Euler(50f,0f,0f);
         }
     }
 
