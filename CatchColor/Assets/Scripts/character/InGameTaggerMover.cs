@@ -50,13 +50,13 @@ public class InGameTaggerMover : CharacterMover
         }
     }
 
-    
-    public override void SetLayer(int layerIndex)
+    /*
+    public void ChangeColor(int layerIndex)
     {
         cam.cullingMask = ~(1 << layerIndex);
         Debug.Log("===child(Tagger)");
     }
-    
+    */
     private void TryAttack()
     {
         if (Input.GetButton("Fire1"))
