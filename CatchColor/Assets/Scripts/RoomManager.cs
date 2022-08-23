@@ -10,7 +10,7 @@ public class RoomManager : NetworkRoomManager {
     public override void Start()
     {
         base.Start();
-        taggernum = Random.Range(0, FindObjectsOfType<RoomPlayer>().Length);
+        taggernum = Random.Range(0, FindObjectsOfType<RoomPlayer>().Length); //이거 여기다가 하면 안됨~
     }
 
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)
