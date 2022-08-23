@@ -19,6 +19,8 @@ public class InGameTaggerMover : CharacterMover
 
     GameObject target;
 
+  
+
     public override void Start()
     {
         base.Start();
@@ -69,6 +71,7 @@ public class InGameTaggerMover : CharacterMover
     IEnumerator AttackCoroutine()
     {
         isAttack = true;
+        anim.SetTrigger("Attack");
 
         yield return new WaitForSeconds(attackDelayA);
         isSwing = true;
