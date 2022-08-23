@@ -117,7 +117,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         else
         {
             pickupActivated = false;
-            textItemInfo.gameObject.SetActive(false);
+            textItemInfo.text = "";
         }
     }
 }

@@ -44,6 +44,7 @@ public class CharacterMover : NetworkBehaviour
     private bool isWalk = false;
     protected bool isRun = false;
     protected bool isGround = true;
+    protected bool isMovable = true;
 
     //움직임 체크
     protected Vector3 lastPos;
@@ -111,7 +112,7 @@ public class CharacterMover : NetworkBehaviour
 
     public virtual void Update()
     {
-        if (hasAuthority)
+        if (isMovable&&hasAuthority)
         {
             IsGround();
             TryJump();
