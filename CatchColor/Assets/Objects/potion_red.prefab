@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 495413762057138827}
   - component: {fileID: 569082633780340818}
   - component: {fileID: -2958789973730351557}
-  m_Layer: 9
+  - component: {fileID: -3959112739860531389}
+  m_Layer: 10
   m_Name: potion_red
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -127,3 +128,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.029727813, y: 0.037076022, z: 0.034326725}
   m_Center: {x: 0, y: 0.017744625, z: -9.313226e-10}
+--- !u!114 &-3959112739860531389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4956599238819142719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: b4cb55376de7aa54e9b754b655270b85
+  hasSpawned: 0
