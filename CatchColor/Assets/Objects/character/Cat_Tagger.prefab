@@ -232,9 +232,9 @@ GameObject:
   - component: {fileID: 4221897643979636999}
   - component: {fileID: 1732617530347568005}
   - component: {fileID: 4428947296098358902}
+  - component: {fileID: 1538427992016498984}
   - component: {fileID: 5140430180419540103}
   - component: {fileID: 7156803924581150228}
-  - component: {fileID: 1538427992016498984}
   - component: {fileID: -1242542869264417178}
   - component: {fileID: 392870733565592796}
   m_Layer: 6
@@ -372,6 +372,26 @@ MonoBehaviour:
   attackDelay: 1
   attackDelayA: 0.5
   attackDelayB: 0.1
+--- !u!114 &1538427992016498984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538427992016498985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc48af2a088e274d9c35a36234b884a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  range: 3
+  itemLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  textItemInfo: {fileID: 6004416269741898388}
+  textColor: {fileID: 4019843179020202068}
 --- !u!65 &5140430180419540103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -399,26 +419,6 @@ CapsuleCollider:
   m_Height: 1.3221796
   m_Direction: 1
   m_Center: {x: 0.027054608, y: 0.16108978, z: -0.06545985}
---- !u!114 &1538427992016498984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1538427992016498985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bc48af2a088e274d9c35a36234b884a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  range: 0
-  itemLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  textItemInfo: {fileID: 6004416269741898388}
-  textColor: {fileID: 4019843179020202068}
 --- !u!95 &-1242542869264417178
 Animator:
   serializedVersion: 3
