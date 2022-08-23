@@ -4278,6 +4278,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2598518982482222272, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771522225829752721, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3901398653373926980, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4326,9 +4334,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Player Runagate
       objectReference: {fileID: 0}
+    - target: {fileID: 3901398653373926993, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3901398653373927007, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}
       propertyPath: sceneId
       value: 3515150539
+      objectReference: {fileID: 0}
+    - target: {fileID: 6567830207034703671, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}

@@ -4,10 +4,10 @@ using UnityEngine.UI;
 using UnityEngine;
 using Mirror;
 
-public class ItemControllerRunagate : NetworkBehaviour
+public class ItemController : NetworkBehaviour
 {
-    //[SerializeField]
-    //private CharacterMover player;
+/*    [SerializeField]
+    private CharacterMover player;*/
 
     [SerializeField]
     private float range; //È¹µæ °¡´ÉÇÑ °Å¸®
@@ -47,7 +47,8 @@ public class ItemControllerRunagate : NetworkBehaviour
         if (idx == 0) color = MyColor.Red;
         else if (idx == 1) color = MyColor.Green;
         else color = MyColor.Blue;
-        CharacterMover.MyPlayer.CmdSetColor(color);
+        CharacterMover.MyPlayer.CmdSetColor(color, idx+7);
+        //InGameRunnerMover.SetLayer(idx + 7);
     }
 
     private void TryAction()
