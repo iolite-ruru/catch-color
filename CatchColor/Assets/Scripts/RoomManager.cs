@@ -50,7 +50,7 @@ public class RoomManager : NetworkRoomManager {
         GameObject gamePlayer = OnRoomServerCreateGamePlayer(conn, roomPlayer);
         if (gamePlayer == null)
         {
-            /*
+            
             Transform startPos = GetStartPosition();
 
             Debug.Log("술래 : " + taggernum);
@@ -63,8 +63,8 @@ public class RoomManager : NetworkRoomManager {
             {
                 gamePlayer = Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity); //도망자 생성
             }
-            */
-            gamePlayer = Instantiate(spawnPrefabs[1], new Vector3(0, 1, 0), Quaternion.identity); //술래 생성
+            
+            //gamePlayer = Instantiate(spawnPrefabs[1], new Vector3(0, 1, 0), Quaternion.identity); //술래 생성
         }
 
         if (!OnRoomServerSceneLoadedForPlayer(conn, roomPlayer, gamePlayer))

@@ -13,7 +13,12 @@ public class InGameRunnerMover : CharacterMover
     public void SetPlayerState_Hook(State _, State state)
     {
         playerState = state;
-        
+        if (hasAuthority)
+        {
+            isMovable = false;
+            cam.transform.localPosition = new Vector3(0f, 20f, 1f);
+            cam.transform.localRotation = Quaternion.Euler(50f,0f,0f);
+        }
     }
 
     [ClientRpc]
@@ -46,7 +51,7 @@ public class InGameRunnerMover : CharacterMover
     {
         base.Update();
 
-        if (hasAuthority)
+        if (isMovable && hasAuthority)
         {
             CameraRotation();
             CharacterRotation();

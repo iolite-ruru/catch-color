@@ -17,7 +17,7 @@ public class InGameTaggerMover : CharacterMover
 
     private RaycastHit hitInfo;
 
-    GameObject target;
+    InGameRunnerMover target;
 
   
 
@@ -42,7 +42,7 @@ public class InGameTaggerMover : CharacterMover
     {
         base.Update();
 
-        if (hasAuthority)
+        if (isMovable && hasAuthority)
         {
             CameraRotation();
             CharacterRotation();
@@ -107,27 +107,25 @@ public class InGameTaggerMover : CharacterMover
     {
         bool check = Physics.Raycast(transform.position, transform.forward, out hitInfo, range);
 
-        //도망자만 죽게 바꿔야 함
-        if (check&& hitInfo.transform.name == "Game Player Runagate")
+        //살아있는 도망자만
+        if (check&& hitInfo.transform.name == "Game Player Runagate(Clone)" && hitInfo.transform.gameObject.GetComponent<InGameRunnerMover>().playerState==State.Alive)
         {
-            target = hitInfo.transform.gameObject;
+            target = hitInfo.transform.gameObject.GetComponent<InGameRunnerMover>();
             return true;
         }
         return false;
     }
 
     [Client]
-    public void TellServerToDestroyObject(GameObject obj)
+    public void TellServerToDestroyObject(InGameRunnerMover obj)
     {
         CmdKillRunner(obj);
     }
 
     [Command]
-    public void CmdKillRunner(GameObject obj)
+    public void CmdKillRunner(InGameRunnerMover obj)
     {
-        //객체 삭제가 아니라 관전 상태(투명)가 되게 바꿔야함
-        NetworkServer.Destroy(obj);
-        //target.playerState = State.Dead;
-        //target.RpcRendererFalse();
+        obj.playerState = State.Dead;
+        obj.RpcRendererFalse();
     }
 }
