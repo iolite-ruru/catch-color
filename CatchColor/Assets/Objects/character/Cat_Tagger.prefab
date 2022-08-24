@@ -1949,10 +1949,11 @@ MonoBehaviour:
   jumpForce: 5
   lookSensitivity: 3
   cameraRatationLimit: 20
+  renderer: {fileID: 0}
   playerColor: 0
   range: 3
   damage: 3
-  attackDelay: 1
+  attackDelay: 0.5
   attackDelayA: 0.5
   attackDelayB: 0.1
 --- !u!114 &7843775079673757385
