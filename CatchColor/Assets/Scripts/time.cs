@@ -43,26 +43,38 @@ public class time : NetworkBehaviour
     }
     void Update()
     {
-        if (LimitTime > 0)
+        if (LimitTime > 0&&!InGameRunnerMover.isEnd)
         {
             LimitTime -= Time.deltaTime;
 
         }
         else
         {
-
-            txt_Time.text = "";
-            backImg.SetActive(true);
-            endTxt.SetActive(true);
-            NextTxt.SetActive(true);
+            if (hasAuthority&&InGameRunnerMover.isEnd) CmdSetText(endTxt); //////////////È£Ãâ ¾ÈµÊ
+            RpcSetActive();
 
             waitTime -= Time.deltaTime;
 
         }
     }
 
+    [Command]
+    public void CmdSetText(GameObject text)
+    {
+        Debug.Log("³»¿ë ¹Ù²ñ");
+        text.GetComponent<Text>().text = "¼ú·¡ ½Â¸®";
+    }
 
 
+    [ClientRpc]
+    public void RpcSetActive()
+    {
+       
+        txt_Time.text = "";
+        backImg.SetActive(true);
+        endTxt.SetActive(true);
+        NextTxt.SetActive(true);
+    }
 
 
 }

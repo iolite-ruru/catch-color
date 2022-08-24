@@ -7,9 +7,7 @@ using UnityEngine.UI;
 public class InGameRunnerMover : CharacterMover
 {
     public static int deadCount = 0;
-
-    [SerializeField]
-    protected SkinnedMeshRenderer[] myMesh = new SkinnedMeshRenderer[2];
+    public static bool isEnd = false;
 
     [SyncVar(hook = nameof(SetPlayerState_Hook))]
     public State playerState;
@@ -20,33 +18,28 @@ public class InGameRunnerMover : CharacterMover
         if (hasAuthority)
         {
             isMovable = false;
-            cam = Camera.main;
-            cam.transform.SetParent(transform.Find("Head").transform);
-            cam.transform.localPosition = new Vector3(0f, 0.017f, -0.01f);
-            /*cam.transform.position = new Vector3(0f, 20f, -10f);
-            cam.transform.rotation = Quaternion.Euler(50f,0f,0f);*/
+            cam.transform.position = new Vector3(0f, 20f, -10f);
+            cam.transform.rotation = Quaternion.Euler(50f,0f,0f);
         }
-        if(deadCount== FindObjectsOfType<InGameRunnerMover>().Length)
+        if (deadCount == FindObjectsOfType<InGameRunnerMover>().Length)
         {
             Debug.Log("모든 도망자 잡음~ 술래가 이김");
+
             if (isServer)
             {
-                //NetworkManager.singleton.StopHost();
+                deadCount = 0;
+                isEnd = true;
             }
 
-        } 
+        }
     }
 
-    public override void SetLayer(int layerIndex)
-    {
-        gameObject.layer = layerIndex;
-    }
 
 
     [ClientRpc]
     public void RpcRendererFalse()
     {
-        //renderer.enabled = false;
+        renderer.enabled = false;
     }
 
 
@@ -66,9 +59,6 @@ public class InGameRunnerMover : CharacterMover
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
 
             GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
-
-            myMesh[0] = transform.Find("Head").GetComponent<SkinnedMeshRenderer>();
-            myMesh[1] = transform.Find("Body").GetComponent<SkinnedMeshRenderer>(); //오브젝트 계층 구조 변경 전
         }
     }
 
@@ -83,35 +73,4 @@ public class InGameRunnerMover : CharacterMover
         }
     }
 
-    [SyncVar(hook = nameof(SetPlayerColor_Hook))]
-    public MyColor playerColor;
-    public override void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
-    {
-        if (renderer == null)
-        {
-            renderer = gameObject.GetComponent<Renderer>();
-        }
-        test(newColor);
-        //renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
-    }
-    
-    public void test(MyColor newColor)
-    {
-        myMesh[0].material.color = PlayerColor.GetColor(newColor);
-        myMesh[1].material.color = PlayerColor.GetColor(newColor);
-    }
-
-    [Command]
-    public override void CmdSetColor(MyColor color, int idx)
-    {
-        playerColor = color;
-        SetLayer(idx);
-    }
-
-    //색상 변경
-    [Command]
-    protected override void CmdSetPlayerCharacter(MyColor color)
-    {
-        playerColor = color;
-    }
 }
