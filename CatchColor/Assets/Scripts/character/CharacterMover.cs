@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CharacterMover : NetworkBehaviour
 {
+
     //현재 플레이어 캐릭터
     private static CharacterMover myPlayer;
     public static CharacterMover MyPlayer
@@ -91,6 +92,7 @@ public class CharacterMover : NetworkBehaviour
 
         renderer = gameObject.GetComponent<Renderer>();
         renderer.material.color = PlayerColor.GetColor(playerColor);
+
 
         if (hasAuthority)
         {

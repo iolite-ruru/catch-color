@@ -361,6 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.03
+  endCanvas: {fileID: 0}
   anim: {fileID: -1242542869264417178}
   walkSpeed: 3
   runSpeed: 6

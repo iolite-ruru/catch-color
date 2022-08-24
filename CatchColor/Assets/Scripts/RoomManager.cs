@@ -10,7 +10,7 @@ public class RoomManager : NetworkRoomManager {
     public override void Start()
     {
         base.Start();
-        taggernum = Random.Range(0, FindObjectsOfType<RoomPlayer>().Length);
+        taggernum = -1;
     }
 
     public override void OnRoomServerConnect(NetworkConnectionToClient conn)
@@ -52,7 +52,7 @@ public class RoomManager : NetworkRoomManager {
         {
             
             Transform startPos = GetStartPosition();
-
+            if (taggernum == -1) taggernum = Random.Range(0, FindObjectsOfType<RoomPlayer>().Length);
             Debug.Log("¼ú·¡ : " + taggernum);
             Debug.Log(RoomPlayer.MyRoomPlayer.playerColor+" index : " + RoomPlayer.MyRoomPlayer.index);
             if (taggernum == roomPlayer.GetComponent<RoomPlayer>().index)
@@ -74,4 +74,9 @@ public class RoomManager : NetworkRoomManager {
         NetworkServer.ReplacePlayerForConnection(conn, gamePlayer, true);
     }
 
+    public override void OnStopHost()
+    {
+        taggernum = -1;
+        InGameRunnerMover.isEnd = false;
+    }
 }
