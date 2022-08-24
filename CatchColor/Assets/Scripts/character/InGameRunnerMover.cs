@@ -6,29 +6,19 @@ using UnityEngine.UI;
 
 public class InGameRunnerMover : CharacterMover
 {
-    public static int deadCount = 0;
+
 
     [SyncVar(hook = nameof(SetPlayerState_Hook))]
     public State playerState;
     public void SetPlayerState_Hook(State _, State state)
     {
         playerState = state;
-        deadCount++;
         if (hasAuthority)
         {
             isMovable = false;
             cam.transform.position = new Vector3(0f, 20f, -10f);
             cam.transform.rotation = Quaternion.Euler(50f,0f,0f);
         }
-        if(deadCount== FindObjectsOfType<InGameRunnerMover>().Length)
-        {
-            Debug.Log("모든 도망자 잡음~ 술래가 이김");
-            if (isServer)
-            {
-                //NetworkManager.singleton.StopHost();
-            }
-
-        } 
     }
 
     [ClientRpc]
