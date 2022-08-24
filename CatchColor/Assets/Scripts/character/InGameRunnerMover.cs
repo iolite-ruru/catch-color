@@ -17,8 +17,11 @@ public class InGameRunnerMover : CharacterMover
         if (hasAuthority)
         {
             isMovable = false;
-            cam.transform.position = new Vector3(0f, 20f, -10f);
-            cam.transform.rotation = Quaternion.Euler(50f,0f,0f);
+            cam = Camera.main;
+            cam.transform.SetParent(transform.Find("Head").transform);
+            cam.transform.localPosition = new Vector3(0f, 0.017f, -0.01f);
+            /*cam.transform.position = new Vector3(0f, 20f, -10f);
+            cam.transform.rotation = Quaternion.Euler(50f,0f,0f);*/
         }
         if(deadCount== FindObjectsOfType<InGameRunnerMover>().Length)
         {
