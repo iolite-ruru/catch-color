@@ -79,9 +79,13 @@ public class CharacterMover : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSetColor(MyColor color)
+    public void CmdSetColor(MyColor color, int idx)
     {
         playerColor = color;
+        SetLayer(idx);
+    }
+    public virtual void SetLayer(int idx)
+    {
     }
 
     public virtual void Start()
