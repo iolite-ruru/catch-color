@@ -8,6 +8,9 @@ public class InGameRunnerMover : CharacterMover
 {
     public static int deadCount = 0;
 
+    [SerializeField]
+    protected SkinnedMeshRenderer[] myMesh = new SkinnedMeshRenderer[2];
+
     [SyncVar(hook = nameof(SetPlayerState_Hook))]
     public State playerState;
     public void SetPlayerState_Hook(State _, State state)
@@ -43,7 +46,7 @@ public class InGameRunnerMover : CharacterMover
     [ClientRpc]
     public void RpcRendererFalse()
     {
-        renderer.enabled = false;
+        //renderer.enabled = false;
     }
 
 
@@ -63,6 +66,9 @@ public class InGameRunnerMover : CharacterMover
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
 
             GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
+
+            myMesh[0] = transform.Find("Head").GetComponent<SkinnedMeshRenderer>();
+            myMesh[1] = transform.Find("Body").GetComponent<SkinnedMeshRenderer>(); //오브젝트 계층 구조 변경 전
         }
     }
 
@@ -77,4 +83,35 @@ public class InGameRunnerMover : CharacterMover
         }
     }
 
+    [SyncVar(hook = nameof(SetPlayerColor_Hook))]
+    public MyColor playerColor;
+    public override void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    {
+        if (renderer == null)
+        {
+            renderer = gameObject.GetComponent<Renderer>();
+        }
+        test(newColor);
+        //renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
+    }
+    
+    public void test(MyColor newColor)
+    {
+        myMesh[0].material.color = PlayerColor.GetColor(newColor);
+        myMesh[1].material.color = PlayerColor.GetColor(newColor);
+    }
+
+    [Command]
+    public override void CmdSetColor(MyColor color, int idx)
+    {
+        playerColor = color;
+        SetLayer(idx);
+    }
+
+    //색상 변경
+    [Command]
+    protected override void CmdSetPlayerCharacter(MyColor color)
+    {
+        playerColor = color;
+    }
 }
