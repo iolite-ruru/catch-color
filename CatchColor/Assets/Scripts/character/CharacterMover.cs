@@ -66,7 +66,8 @@ public class CharacterMover : NetworkBehaviour
     protected BoxCollider myCollider;
 
     //색상관련
-    protected new Renderer renderer;
+    [SerializeField]
+    protected new MeshRenderer renderer;
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
@@ -74,7 +75,7 @@ public class CharacterMover : NetworkBehaviour
     {
         if (renderer == null)
         {
-            renderer = gameObject.GetComponent<Renderer>();
+            renderer = gameObject.GetComponent<MeshRenderer>();
         }
         renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
     }
@@ -90,9 +91,8 @@ public class CharacterMover : NetworkBehaviour
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Confined;
 
-        renderer = gameObject.GetComponent<Renderer>();
-        renderer.material.color = PlayerColor.GetColor(playerColor);
-
+        //renderer = gameObject.GetComponent<MeshRenderer>();
+        
 
         if (hasAuthority)
         {
@@ -105,9 +105,6 @@ public class CharacterMover : NetworkBehaviour
             myRigid = GetComponent<Rigidbody>();
                                                        
             currentSpeed = walkSpeed;
-
-            
-
         }
 
     }
