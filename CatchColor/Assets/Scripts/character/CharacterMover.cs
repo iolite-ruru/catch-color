@@ -68,29 +68,35 @@ public class CharacterMover : NetworkBehaviour
     protected new Renderer renderer;
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
-    public MyColor playerColor;
-    public void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    public MyColor playerColor_org;
+    public virtual void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
     {
-        if (renderer == null)
+        /*if (renderer == null)
         {
             renderer = gameObject.GetComponent<Renderer>();
         }
-        renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
+        renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기*/
     }
 
     [Command]
-    public void CmdSetColor(MyColor color)
+    public virtual void CmdSetColor(MyColor color, int idx)
     {
-        playerColor = color;
+        //playerColor = color;
+        //SetLayer(idx);
+    }
+    public virtual void SetLayer(int idx)
+    {
     }
 
     public virtual void Start()
     {
+        //커서락 설정
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Confined;
 
-        renderer = gameObject.GetComponent<Renderer>();
-        renderer.material.color = PlayerColor.GetColor(playerColor);
+        /*renderer = gameObject.GetComponent<Renderer>();
+        renderer.material.color = PlayerColor.GetColor(playerColor);*/
+
 
         if (hasAuthority)
         {
@@ -222,8 +228,8 @@ public class CharacterMover : NetworkBehaviour
 
     //색상 변경
     [Command]
-    protected void CmdSetPlayerCharacter(MyColor color)
+    protected virtual void CmdSetPlayerCharacter(MyColor color)
     {
-        playerColor = color;
+        //playerColor = color;
     }
 }

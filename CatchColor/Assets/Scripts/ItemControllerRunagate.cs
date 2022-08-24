@@ -29,6 +29,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         {
             textColor.gameObject.SetActive(false);
         }
+        SetColor(-3);
     }
     void Update()
     {
@@ -47,7 +48,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         if (idx == 0) color = MyColor.Red;
         else if (idx == 1) color = MyColor.Green;
         else color = MyColor.Blue;
-        CharacterMover.MyPlayer.CmdSetColor(color);
+        CharacterMover.MyPlayer.CmdSetColor(color, idx+7);
     }
 
     private void TryAction()

@@ -18,8 +18,31 @@ public class InGameTaggerMover : CharacterMover
     private RaycastHit hitInfo;
 
     InGameRunnerMover target;
+    [SyncVar(hook = nameof(SetPlayerColor_Hook))]
+    public MyColor playerColor;
+    public override void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    {
+        if (renderer == null)
+        {
+            renderer = gameObject.GetComponent<Renderer>();
+        }
+        renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
+    }
 
-  
+    [Command]
+    public override void CmdSetColor(MyColor color, int idx)
+    {
+        playerColor = color;
+        SetLayer(idx);
+    }
+
+    //색상 변경
+    [Command]
+    protected override void CmdSetPlayerCharacter(MyColor color)
+    {
+        playerColor = color;
+    }
+
 
     public override void Start()
     {
@@ -50,13 +73,12 @@ public class InGameTaggerMover : CharacterMover
         }
     }
 
-    /*
-    public void ChangeColor(int layerIndex)
+    public override void SetLayer(int layerIndex)
     {
         cam.cullingMask = ~(1 << layerIndex);
         Debug.Log("===child(Tagger)");
     }
-    */
+
     private void TryAttack()
     {
         if (Input.GetButton("Fire1"))
