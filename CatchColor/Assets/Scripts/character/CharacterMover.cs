@@ -67,7 +67,7 @@ public class CharacterMover : NetworkBehaviour
 
     //색상관련
     [SerializeField]
-    protected new MeshRenderer renderer;
+    protected new Renderer renderer;
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
@@ -75,7 +75,7 @@ public class CharacterMover : NetworkBehaviour
     {
         if (renderer == null)
         {
-            renderer = gameObject.GetComponent<MeshRenderer>();
+            renderer = gameObject.GetComponent<Renderer>();
         }
         renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
     }

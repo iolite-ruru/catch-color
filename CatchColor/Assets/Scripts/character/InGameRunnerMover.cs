@@ -45,13 +45,20 @@ public class InGameRunnerMover : CharacterMover
 
     public override void Start()
     {
+        renderer = transform.Find("Body").GetComponent<SkinnedMeshRenderer>();
+        renderer.material.color = PlayerColor.GetColor(playerColor);
+
         base.Start();
 
         if (hasAuthority)
         {
-            cam = Camera.main;
+/*            cam = Camera.main;
             cam.transform.SetParent(transform);
-            cam.transform.localPosition = new Vector3(0f, 1f, 0f);
+            cam.transform.localPosition = new Vector3(0f, 1f, 0f);*/
+
+            cam = Camera.main;
+            cam.transform.SetParent(transform.Find("Body").transform);
+            cam.transform.localPosition = new Vector3(0f, 0.02f, -0.01f);
 
             playerState = State.Alive;
             

@@ -5,22 +5,25 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 4723146814002874508
-    second: Armature|Attack
+    second: Tagger|Attack
   - first:
       74: -69382783725467830
-    second: Armature|Run_Arms
+    second: Tagger|Run_Arms
+  - first:
+      74: -8148865603141773206
+    second: Tagger|Run_Base
+  - first:
+      74: -7947631040893058313
+    second: Tagger|Walk_Arms
+  - first:
+      74: 8618716176855483722
+    second: Tagger|Walk_Base
+  - first:
+      74: -3100369314251171874
+    second: Tagger|Idle
   - first:
       74: -8148865603141773206
     second: Armature|Run_Base
-  - first:
-      74: -7947631040893058313
-    second: Armature|Walk_Arms
-  - first:
-      74: 8618716176855483722
-    second: Armature|Walk_Base
-  - first:
-      74: -3100369314251171874
-    second: Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -50,7 +53,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Attack
+      name: Tagger|Attack
       takeName: Armature|Attack
       internalID: 0
       firstFrame: 0
@@ -79,7 +82,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Run_Arms
+      name: Tagger|Run_Arms
       takeName: Armature|Run_Arms
       internalID: 0
       firstFrame: 0
@@ -90,7 +93,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -119,7 +122,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -137,7 +140,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Walk_Arms
+      name: Tagger|Walk_Arms
       takeName: Armature|Walk_Arms
       internalID: 0
       firstFrame: 0
@@ -148,7 +151,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -166,7 +169,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Walk_Base
+      name: Tagger|Walk_Base
       takeName: Armature|Walk_Base
       internalID: 0
       firstFrame: 0
@@ -177,7 +180,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -195,18 +198,18 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle
+      name: Tagger|Idle
       takeName: Armature|Attack
       internalID: 0
       firstFrame: 0
-      lastFrame: 0
+      lastFrame: 0.10000001
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
