@@ -53,11 +53,7 @@ public class InGameTaggerMover : CharacterMover
         }
     }
 
-    public override void SetLayer(int layerIndex)
-    {
-        cam.cullingMask = ~(1 << layerIndex);
-        Debug.Log("===child(Tagger)");
-    }
+    
 
     private void TryAttack()
     {
@@ -110,7 +106,7 @@ public class InGameTaggerMover : CharacterMover
         bool check = Physics.Raycast(transform.position, transform.forward, out hitInfo, range);
 
         //살아있는 도망자만
-        if (check&& hitInfo.transform.name == "Game Player Runagate(Clone)" && hitInfo.transform.gameObject.GetComponent<InGameRunnerMover>().playerState==State.Alive)
+        if (check&& hitInfo.transform.name == "Cat_Runner(Clone)" && hitInfo.transform.gameObject.GetComponent<InGameRunnerMover>().playerState==State.Alive)
         {
             target = hitInfo.transform.gameObject.GetComponent<InGameRunnerMover>();
             return true;

@@ -1822,7 +1822,7 @@ GameObject:
   - component: {fileID: 7843775079673757391}
   m_Layer: 6
   m_Name: Cat_Tagger
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
