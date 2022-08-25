@@ -50,22 +50,12 @@ public class time : NetworkBehaviour
         }
         else
         {
-            if (hasAuthority&&InGameRunnerMover.isEnd) CmdSetText(endTxt); //////////////È£Ãâ ¾ÈµÊ
             RpcSetActive();
 
             waitTime -= Time.deltaTime;
 
         }
     }
-
-    [Command]
-    public void CmdSetText(GameObject text)
-    {
-        Debug.Log("³»¿ë ¹Ù²ñ");
-        text.GetComponent<Text>().text = "¼ú·¡ ½Â¸®";
-    }
-
-
     [ClientRpc]
     public void RpcSetActive()
     {
