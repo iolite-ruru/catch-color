@@ -78,12 +78,18 @@ public class CharacterMover : NetworkBehaviour
             renderer = gameObject.GetComponent<Renderer>();
         }
         renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
+        SetLayer(PlayerColor.GetColorInt(newColor)+7);
     }
 
     [Command]
     public void CmdSetColor(MyColor color)
     {
         playerColor = color;
+    }
+
+    public virtual void SetLayer(int idx)
+    {
+        Debug.Log("===Parent");
     }
 
     public virtual void Start()

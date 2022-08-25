@@ -34,7 +34,11 @@ public class InGameRunnerMover : CharacterMover
         }
     }
 
-
+    public override void SetLayer(int layerIndex)
+    {
+        gameObject.layer = layerIndex;
+        Debug.Log("===child(Runner)");
+    }
 
     [ClientRpc]
     public void RpcRendererFalse()
