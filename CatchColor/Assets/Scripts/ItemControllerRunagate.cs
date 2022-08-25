@@ -75,7 +75,7 @@ public class ItemControllerRunagate : NetworkBehaviour
                 else if (itemName.Equals("Blue")) SetColor(2);
 
                 TellServerToDestroyObject(hitInfo.transform.gameObject);
-                //Destroy(hitInfo.transform.gameObject);
+                
                 SetItemInfo(false);
             }
         }
@@ -91,6 +91,7 @@ public class ItemControllerRunagate : NetworkBehaviour
     public void CmdDestroyItem(GameObject obj)
     {
         if (!obj) return;
+        itemCreate.itemch = false;
         NetworkServer.Destroy(obj);
     }
     private void CheckItem()
