@@ -20,14 +20,13 @@ public class itemCreate : NetworkBehaviour
     {
         if (itemch == false)
         {
-            Invoke("CmdItemCreate", 5);
+            Invoke("CmdItemCreate", 1);
             itemch = true;
 
         }
     }
 
     
-    [Command]
     private void CmdItemCreate()
     {
         GameObject itemCre = Instantiate(itemPrefab);
