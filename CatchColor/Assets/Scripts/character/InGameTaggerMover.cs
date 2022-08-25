@@ -56,7 +56,7 @@ public class InGameTaggerMover : CharacterMover
     public override void SetLayer(int layerIndex)
     {
         cam.cullingMask = ~(1 << layerIndex);
-        Debug.Log("===child(Tagger)");
+        Debug.Log("===child(Tagger): "+layerIndex +" => "+ cam.cullingMask.ToString());
     }
 
     private void TryAttack()
