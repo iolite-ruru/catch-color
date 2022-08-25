@@ -37,7 +37,7 @@ public class InGameRunnerMover : CharacterMover
     public override void SetLayer(int layerIndex)
     {
         gameObject.layer = layerIndex;
-        Debug.Log("===child(Runner): "+ layerIndex +" => "+ gameObject.layer.ToString());
+        Debug.Log("===child(Runner)");
     }
 
     [ClientRpc]
