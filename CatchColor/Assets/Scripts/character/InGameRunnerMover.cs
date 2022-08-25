@@ -58,7 +58,7 @@ public class InGameRunnerMover : CharacterMover
 
             cam = Camera.main;
             cam.transform.SetParent(transform.Find("Body").transform);
-            cam.transform.localPosition = new Vector3(0f, 0.02f, -0.01f);
+            cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
 
             playerState = State.Alive;
             

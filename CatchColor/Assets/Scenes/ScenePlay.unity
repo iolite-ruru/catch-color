@@ -7779,7 +7779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  LimitTime: 10
+  LimitTime: 180
   txt_Time: {fileID: 634517798}
   backImg: {fileID: 1507799745}
   endTxt: {fileID: 512446780}
