@@ -15,6 +15,7 @@ public class InGameTaggerMover : CharacterMover
     public float attackDelayA;
     public float attackDelayB;
 
+
     private RaycastHit hitInfo;
 
     InGameRunnerMover target;
@@ -25,6 +26,8 @@ public class InGameTaggerMover : CharacterMover
     {
         renderer = transform.Find("Body").Find("Glasses").GetComponent<MeshRenderer>();
         renderer.material.color = PlayerColor.GetColor(playerColor);
+
+        transform.gameObject.layer = 6;
 
         base.Start();
 
@@ -38,7 +41,8 @@ public class InGameTaggerMover : CharacterMover
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함. 처음 생성 될때 색상, 닉네임 설정
 
             GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
-           }
+            //SetLayer(layer);
+        }
     }
 
     public override void Update()
@@ -50,12 +54,21 @@ public class InGameTaggerMover : CharacterMover
             CameraRotation();
             CharacterRotation();
             TryAttack();
+            //SetLayer(layer);
+            
+        }
+        if (isChangeColor)
+        {
+            cam.cullingMask = ~(1 << layer);
+            isChangeColor = false;
         }
     }
 
     public override void SetLayer(int layerIndex)
     {
-        cam.cullingMask = ~(1 << layerIndex);
+        //cam.cullingMask = ~(1 << layerIndex);
+        layer = layerIndex;
+        isChangeColor = true;
         Debug.Log("===child(Tagger): "+layerIndex +" => "+ cam.cullingMask.ToString());
     }
 
