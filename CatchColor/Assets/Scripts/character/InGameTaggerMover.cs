@@ -55,14 +55,13 @@ public class InGameTaggerMover : CharacterMover
             CharacterRotation();
             TryAttack();
             //SetLayer(layer);
-
-            if (isChangeColor)
-            {
-                cam.cullingMask = ~(1 << layer);
-                isChangeColor = false;
-            }
+            
         }
-
+        if (isChangeColor)
+        {
+            cam.cullingMask = ~(1 << layer);
+            isChangeColor = false;
+        }
     }
 
     public override void SetLayer(int layerIndex)

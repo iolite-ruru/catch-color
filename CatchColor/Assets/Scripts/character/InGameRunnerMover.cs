@@ -81,17 +81,15 @@ public class InGameRunnerMover : CharacterMover
         {
             CameraRotation();
             CharacterRotation();
-
-            if (isChangeColor)
-            {
-                Debug.Log("InGameRunnerMover.cs >> Update >> if (isChangeColor)");
-                transform.gameObject.layer = layer;
-                Debug.Log("InGameRunnerMover.cs >> Update >> : " + transform.gameObject.layer.ToString());
-                isChangeColor = false;
-            }
         }
 
-        
+        if (isChangeColor)
+        {
+            Debug.Log("InGameRunnerMover.cs >> Update >> if (isChangeColor)");
+            transform.gameObject.layer = layer;
+            Debug.Log("InGameRunnerMover.cs >> Update >> : " + transform.gameObject.layer.ToString());
+            isChangeColor = false;
+        }
     }
 
 }

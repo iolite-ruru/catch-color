@@ -46,7 +46,7 @@ public class CharacterMover : NetworkBehaviour
     protected bool isRun = false;
     protected bool isGround = true;
     protected bool isMovable = true;
-    public bool isChangeColor = false;
+    public static bool isChangeColor = false;
 
     //움직임 체크
     protected Vector3 lastPos;
@@ -107,7 +107,6 @@ public class CharacterMover : NetworkBehaviour
 
         if (hasAuthority)
         {
-            isChangeColor = true;
             //cam = Camera.main;
             //cam.transform.SetParent(transform);
             //cam.transform.localPosition = new Vector3(0f, 1f, 0f);
