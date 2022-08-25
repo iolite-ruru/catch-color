@@ -88,7 +88,7 @@ public class InGameRunnerMover : CharacterMover
     {
         layer = layerIndex;
         isChangeColor = true;
-        //transform.gameObject.layer = layerIndex;
+        transform.gameObject.layer = layerIndex;
         Debug.Log("SetLayer(Runner): " + layerIndex + " => " + gameObject.layer.ToString());
     }
 }
