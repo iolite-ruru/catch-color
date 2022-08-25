@@ -20,6 +20,7 @@ public class PlayerColor
     };
 
     public static Color GetColor(MyColor color) { return colors[(int)color]; }
+    public static int GetColorInt(MyColor color) { return (int)color; }
 
     public static Color Red { get { return colors[(int)MyColor.Red]; } }
     public static Color Green { get { return colors[(int)MyColor.Green]; } }

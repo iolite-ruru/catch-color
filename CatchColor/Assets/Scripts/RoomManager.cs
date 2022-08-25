@@ -57,7 +57,7 @@ public class RoomManager : NetworkRoomManager {
             Debug.Log(RoomPlayer.MyRoomPlayer.playerColor+" index : " + RoomPlayer.MyRoomPlayer.index);
             if (taggernum == roomPlayer.GetComponent<RoomPlayer>().index)
             {
-                gamePlayer =  Instantiate(spawnPrefabs[1], new Vector3(0,1,0), Quaternion.identity); //贱贰 积己
+                gamePlayer =  Instantiate(spawnPrefabs[0], new Vector3(0,1,0), Quaternion.identity); //贱贰 积己
             }
             else
             {

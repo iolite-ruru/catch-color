@@ -949,11 +949,10 @@ MonoBehaviour:
   networkAddress: localhost
   maxConnections: 10
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 3901398653373926993, guid: 8346ad624e9365747ab78b97ed57ca0b, type: 3}
+  playerPrefab: {fileID: 6533973043622274006, guid: bbc75fdb137742c4d8f3d0b030237c70, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
-  - {fileID: 6533973043622274006, guid: bbc75fdb137742c4d8f3d0b030237c70, type: 3}
   - {fileID: 7843775079673757383, guid: 5a536c6453ff21341b26e7c0ed7e25d4, type: 3}
   showRoomGUI: 1
   minPlayers: 1
