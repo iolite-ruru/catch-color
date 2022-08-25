@@ -46,7 +46,6 @@ public class CharacterMover : NetworkBehaviour
     protected bool isRun = false;
     protected bool isGround = true;
     protected bool isMovable = true;
-    public static bool isChangeColor = false;
 
     //움직임 체크
     protected Vector3 lastPos;
@@ -70,9 +69,6 @@ public class CharacterMover : NetworkBehaviour
     [SerializeField]
     protected new Renderer renderer;
 
-    [SerializeField]
-    public int layer = 4;
-
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
     public void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
@@ -83,7 +79,6 @@ public class CharacterMover : NetworkBehaviour
         }
         renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
         SetLayer(PlayerColor.GetColorInt(newColor)+7);
-        //layer = PlayerColor.GetColorInt(newColor) + 7;
     }
 
     [Command]

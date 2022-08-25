@@ -58,8 +58,6 @@ public class RoomPlayer : NetworkRoomPlayer
         else if (idx == 1) color = MyColor.Green;
         else color = MyColor.Blue;
         playerColor = color;
-        CharacterMover.isChangeColor = true;
-        Debug.Log("RoomPlayer.cs >> isChangeColor = true");
 
     }
 
