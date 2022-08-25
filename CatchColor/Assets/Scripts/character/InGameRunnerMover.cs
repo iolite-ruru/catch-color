@@ -34,11 +34,6 @@ public class InGameRunnerMover : CharacterMover
         }
     }
 
-    public override void SetLayer(int layerIndex)
-    {
-        gameObject.layer = layerIndex;
-        Debug.Log("===child(Runner)");
-    }
 
     [ClientRpc]
     public void RpcRendererFalse()
@@ -56,10 +51,6 @@ public class InGameRunnerMover : CharacterMover
 
         if (hasAuthority)
         {
-/*            cam = Camera.main;
-            cam.transform.SetParent(transform);
-            cam.transform.localPosition = new Vector3(0f, 1f, 0f);*/
-
             cam = Camera.main;
             cam.transform.SetParent(transform.Find("Body").transform);
             cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
@@ -67,9 +58,10 @@ public class InGameRunnerMover : CharacterMover
             playerState = State.Alive;
             
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
-            CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
+            CmdSetPlayerCharacter(myRoomPlayer.playerColor+7); //나중에 닉네임 설정할때 수정해야함
 
             GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
+            SetLayer(PlayerColor.GetColorInt(playerColor)+7);
         }
     }
 
@@ -81,7 +73,22 @@ public class InGameRunnerMover : CharacterMover
         {
             CameraRotation();
             CharacterRotation();
+
+            if (isChangeColor)
+            {
+                Debug.Log("InGameRunnerMover.cs >> Update >> if (isChangeColor)");
+                gameObject.layer = layer;
+                Debug.Log("InGameRunnerMover.cs >> Update >> : " + transform.gameObject.layer.ToString());
+                isChangeColor = false;
+            }
         }
     }
 
+    public override void SetLayer(int layerIndex)
+    {
+        layer = layerIndex;
+        isChangeColor = true;
+        //transform.gameObject.layer = layerIndex;
+        Debug.Log("SetLayer(Runner): " + layerIndex + " => " + gameObject.layer.ToString());
+    }
 }
