@@ -19,7 +19,7 @@ public class InGameRunnerMover : CharacterMover
         {
             isMovable = false;
             cam.transform.position = new Vector3(0f, 20f, -10f);
-            cam.transform.rotation = Quaternion.Euler(50f,0f,0f);
+            cam.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
         }
         if (deadCount == FindObjectsOfType<InGameRunnerMover>().Length)
         {
@@ -56,12 +56,12 @@ public class InGameRunnerMover : CharacterMover
             cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
 
             playerState = State.Alive;
-            
+
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
-            CmdSetPlayerCharacter(myRoomPlayer.playerColor+7); //나중에 닉네임 설정할때 수정해야함
+            CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
 
             GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
-            SetLayer(PlayerColor.GetColorInt(playerColor)+7);
+            SetLayer(PlayerColor.GetColorInt(playerColor) + 7);
         }
     }
 
@@ -77,7 +77,7 @@ public class InGameRunnerMover : CharacterMover
             if (isChangeColor)
             {
                 Debug.Log("InGameRunnerMover.cs >> Update >> if (isChangeColor)");
-                gameObject.layer = layer;
+                //gameObject.layer = layer;
                 Debug.Log("InGameRunnerMover.cs >> Update >> : " + transform.gameObject.layer.ToString());
                 isChangeColor = false;
             }
