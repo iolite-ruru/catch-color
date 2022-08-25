@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CharacterMover : NetworkBehaviour
 {
+
     //현재 플레이어 캐릭터
     private static CharacterMover myPlayer;
     public static CharacterMover MyPlayer
@@ -65,6 +66,7 @@ public class CharacterMover : NetworkBehaviour
     protected BoxCollider myCollider;
 
     //색상관련
+    [SerializeField]
     protected new Renderer renderer;
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
@@ -76,6 +78,7 @@ public class CharacterMover : NetworkBehaviour
             renderer = gameObject.GetComponent<Renderer>();
         }
         renderer.material.color = PlayerColor.GetColor(newColor); //술래면 고글 색 바꾸기
+        SetLayer(PlayerColor.GetColorInt(newColor)+7);
     }
 
     [Command]
@@ -84,13 +87,18 @@ public class CharacterMover : NetworkBehaviour
         playerColor = color;
     }
 
+    public virtual void SetLayer(int idx)
+    {
+        Debug.Log("===Parent");
+    }
+
     public virtual void Start()
     {
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Confined;
 
-        renderer = gameObject.GetComponent<Renderer>();
-        renderer.material.color = PlayerColor.GetColor(playerColor);
+        //renderer = gameObject.GetComponent<MeshRenderer>();
+        
 
         if (hasAuthority)
         {
@@ -103,9 +111,6 @@ public class CharacterMover : NetworkBehaviour
             myRigid = GetComponent<Rigidbody>();
                                                        
             currentSpeed = walkSpeed;
-
-            
-
         }
 
     }

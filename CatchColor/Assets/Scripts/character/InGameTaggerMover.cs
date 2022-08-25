@@ -23,19 +23,22 @@ public class InGameTaggerMover : CharacterMover
 
     public override void Start()
     {
+        renderer = transform.Find("Body").Find("Glasses").GetComponent<MeshRenderer>();
+        renderer.material.color = PlayerColor.GetColor(playerColor);
+
         base.Start();
 
         if (hasAuthority)
         {
             cam = Camera.main;
-            cam.transform.SetParent(transform.Find("Head").transform);
-            cam.transform.localPosition = new Vector3(0f, 0.017f, -0.01f);
+            cam.transform.SetParent(transform.Find("Body").transform);
+            cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
 
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함. 처음 생성 될때 색상, 닉네임 설정
 
             GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
-        }
+           }
     }
 
     public override void Update()
@@ -50,13 +53,12 @@ public class InGameTaggerMover : CharacterMover
         }
     }
 
-    /*
-    public void ChangeColor(int layerIndex)
+    public override void SetLayer(int layerIndex)
     {
         cam.cullingMask = ~(1 << layerIndex);
         Debug.Log("===child(Tagger)");
     }
-    */
+
     private void TryAttack()
     {
         if (Input.GetButton("Fire1"))
