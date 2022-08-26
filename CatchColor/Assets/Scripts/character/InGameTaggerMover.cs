@@ -19,7 +19,14 @@ public class InGameTaggerMover : CharacterMover
 
     InGameRunnerMover target;
 
-  
+
+    public override void SetLayerIndex_Hook(int oldLayer, int newLayer)
+    {
+        //Debug.Log("Tagger >> Test >> cam : " + newLayer);
+        cam.cullingMask = ~(1 << newLayer);
+        //isChangeColor = false;
+    }
+
 
     public override void Start()
     {
@@ -53,21 +60,24 @@ public class InGameTaggerMover : CharacterMover
             CameraRotation();
             CharacterRotation();
             TryAttack();
-
-            if (isChangeColor)
+            //cam.cullingMask = ~(1 << layer);
+            //isChangeColor = false;
+            /*if (isChangeColor)
             {
                 cam.cullingMask = ~(1 << layer);
                 isChangeColor = false;
-            }
+                Debug.Log("Tagger >> Update >> isChangeColor");
+            }*/
         }
     }
 
     public override void SetLayer(int layerIndex)
     {
         //cam.cullingMask = ~(1 << layerIndex);
+        Debug.Log("Tagger >> SetLayer: "+layerIndex);
         layer = layerIndex;
-        isChangeColor = true;
-        Debug.Log("===child(Tagger): " + layerIndex + " => " + cam.cullingMask.ToString());
+        //isChangeColor = true;
+        //Debug.Log("===child(Tagger): " + layerIndex + " => " + cam.cullingMask);
     }
 
     private void TryAttack()
