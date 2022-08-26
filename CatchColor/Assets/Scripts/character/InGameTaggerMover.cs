@@ -39,8 +39,8 @@ public class InGameTaggerMover : CharacterMover
 
         if (hasAuthority)
         {
-            cam = Camera.main;
-            cam.transform.SetParent(transform.Find("Body").transform);
+            //cam = Camera.main;
+            //cam.transform.SetParent(transform.Find("Body").transform);
             cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
 
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
