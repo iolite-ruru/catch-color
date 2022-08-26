@@ -71,7 +71,13 @@ public class CharacterMover : NetworkBehaviour
     protected new Renderer renderer;
 
     [SerializeField]
-    public int layer = 4;
+    [SyncVar(hook =nameof(SetLayerIndex_Hook))]
+    public int layer = 6; //Player ·¹ÀÌ¾î
+
+    public virtual void SetLayerIndex_Hook(int oldLayer,int newLayer)
+    {
+        Debug.Log("Parent >> Test : "+ newLayer);
+    }
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
