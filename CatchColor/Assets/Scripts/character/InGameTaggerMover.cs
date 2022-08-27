@@ -41,7 +41,9 @@ public class InGameTaggerMover : CharacterMover
         {
             //cam = Camera.main;
             //cam.transform.SetParent(transform.Find("Body").transform);
+            //cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
             cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
+            cam.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
 
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함. 처음 생성 될때 색상, 닉네임 설정

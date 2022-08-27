@@ -123,7 +123,10 @@ public class CharacterMover : NetworkBehaviour
 
             currentSpeed = walkSpeed;
         }
-        else return;
+        else
+        {
+            cam.enabled = false;
+        }
 
     }
 

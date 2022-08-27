@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Blue
   itemColor: 2
   itemImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 8745923216602968530, guid: 1b8bbf60af7f9a345a8ba7a199f4b8da, type: 3}
