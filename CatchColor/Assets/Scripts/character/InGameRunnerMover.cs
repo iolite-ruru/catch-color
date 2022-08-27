@@ -21,7 +21,7 @@ public class InGameRunnerMover : CharacterMover
         if (hasAuthority)
         {
             isMovable = false;
-            cam.transform.position = new Vector3(0f, 20f, -10f);
+            //cam.transform.position = new Vector3(0f, 20f, -10f);
             cam.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
         }
         if (deadCount == FindObjectsOfType<InGameRunnerMover>().Length)
@@ -57,14 +57,12 @@ public class InGameRunnerMover : CharacterMover
             //cam = Camera.main;
             //cam.transform.SetParent(transform.Find("Body").transform);
             cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
+            cam.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
 
             playerState = State.Alive;
 
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
-
-            //BodyObjs[0] = transform.Find("Body").Find("Eyes").gameObject;
-            //BodyObjs[1] = transform.Find("Body").Find("Nose").gameObject;
 
             GameObject.Find("TextColor").GetComponent<Text>().text = myRoomPlayer.playerColor.ToString();
             SetLayer(PlayerColor.GetColorInt(playerColor) + 7);
@@ -101,18 +99,8 @@ public class InGameRunnerMover : CharacterMover
         {
             item.layer = newLayer;
         }
-/*        BodyObjs[0]
-        BodyObjs[1].layer = newLayer;*/
     }
 
-/*    public void ChangeLayersRecursively(Transform trans)
-    {
-        trans.gameObject.layer = layer;
-        foreach (Transform child in trans)
-        {
-            ChangeLayersRecursively(child);
-        }
-    }*/
 
     public override void SetLayer(int layerIndex)
     {
