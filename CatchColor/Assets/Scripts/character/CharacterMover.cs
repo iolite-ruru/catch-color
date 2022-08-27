@@ -61,7 +61,7 @@ public class CharacterMover : NetworkBehaviour
     protected float currentCameraRotationX = 0; //정면
 
     //필요한 컴포넌트
-    //[SerializeField]
+    [SerializeField]
     protected Camera cam;
     protected Rigidbody myRigid;
     protected BoxCollider myCollider;
@@ -71,7 +71,13 @@ public class CharacterMover : NetworkBehaviour
     protected new Renderer renderer;
 
     [SerializeField]
-    public int layer = 4;
+    [SyncVar(hook =nameof(SetLayerIndex_Hook))]
+    public int layer = 6; //Player 레이어
+
+    public virtual void SetLayerIndex_Hook(int oldLayer,int newLayer)
+    {
+        Debug.Log("Parent >> Test : "+ newLayer);
+    }
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
@@ -102,7 +108,7 @@ public class CharacterMover : NetworkBehaviour
         //Cursor.lockState = CursorLockMode.Confined;
 
         //renderer = gameObject.GetComponent<MeshRenderer>();
-        
+
 
         if (hasAuthority)
         {
@@ -114,9 +120,10 @@ public class CharacterMover : NetworkBehaviour
             //cam.cullingMask = ~(1<<LayerMask.NameToLayer("Runnagate_Red"));
             myCollider = GetComponent<BoxCollider>();
             myRigid = GetComponent<Rigidbody>();
-                                                       
+
             currentSpeed = walkSpeed;
         }
+        else return;
 
     }
 
