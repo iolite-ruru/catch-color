@@ -10,9 +10,16 @@ public class time : NetworkBehaviour
     public void SetLimitTime_Hook(float _, float time)
     {
         LimitTime = time;
-        if (Mathf.Round(LimitTime) > 60)
-            txt_Time.text = "남은 시간 : " + (int)(Mathf.Round(LimitTime)) / 60 + "분 " + (Mathf.Round(LimitTime)) % 60 + "초";
-        else txt_Time.text = "남은 시간 : " + Mathf.Round(LimitTime) + "초";
+        string time_minute = "0" + (int)(Mathf.Round(LimitTime)) / 60;
+        string time_second;
+        if ((int)(Mathf.Round(LimitTime)) % 60 - 10 < 0)
+            time_second = "0" + (int)(Mathf.Round(LimitTime)) % 60;
+        else
+            time_second = (int)(Mathf.Round(LimitTime)) % 60 +"";
+
+
+        txt_Time.text = time_minute + " : " + time_second;
+        //else txt_Time.text = "남은 시간 : " + Mathf.Round(LimitTime) + "초";
     }
     public Text txt_Time;
     public GameObject backImg;

@@ -67,12 +67,13 @@ public class ItemControllerRunagate : NetworkBehaviour
             {
                 
                 string itemName = hitInfo.transform.GetComponent<ItemPickup>().item.itemName;
-                Debug.Log(itemName + " È¹µæÇÔ");
+                //string itemNameKor = hitInfo.transform.GetComponent<ItemPickup>().item.itemNameKor;
+                //Debug.Log(itemName + " È¹µæÇÔ");
 
                 textColor.text = itemName;
-                if (itemName.Equals("Red")) SetColor(0);
-                else if (itemName.Equals("Green")) SetColor(1);
-                else if (itemName.Equals("Blue")) SetColor(2);
+                if (itemName.Equals("»¡°­")) SetColor(0);
+                else if (itemName.Equals("ÃÊ·Ï")) SetColor(1);
+                else if (itemName.Equals("ÆÄ¶û")) SetColor(2);
 
                 CmdDestroyItem(hitInfo.transform.gameObject);
                 
@@ -106,7 +107,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         {
             pickupActivated = true;
             textItemInfo.gameObject.SetActive(true);
-            textItemInfo.text = hitInfo.transform.GetComponent<ItemPickup>().item.itemName + " È¹µæ" + "<color=yellow>" + "(E)" + "</color>";
+            textItemInfo.text = "<b>" + hitInfo.transform.GetComponent<ItemPickup>().item.itemName + "</b> È¹µæ" + "<color=yellow>" + "(E)" + "</color>";
         }
         else
         {
