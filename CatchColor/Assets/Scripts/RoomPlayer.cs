@@ -37,7 +37,11 @@ public class RoomPlayer : NetworkRoomPlayer
         if (isServer)
         {
             SpawnLobbyPlayerCharacter();
+            LobyUIManager.Instance.ActiveStartButton();
         }
+
+
+
         LobyUIManager.Instance.UpdatePlyerCount();
     }
 

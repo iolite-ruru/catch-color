@@ -1409,7 +1409,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 6533973043622274006, guid: bbc75fdb137742c4d8f3d0b030237c70, type: 3}
-  showRoomGUI: 1
+  showRoomGUI: 0
   minPlayers: 1
   roomPlayerPrefab: {fileID: 9013395138965280530, guid: ecfbccadff3036f4ea085969a0758c7e, type: 3}
   RoomScene: Assets/Scenes/WaitingRoomScene.unity
