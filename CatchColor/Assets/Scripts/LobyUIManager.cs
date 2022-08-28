@@ -33,6 +33,22 @@ public class LobyUIManager : MonoBehaviour
         var manager = NetworkManager.singleton as RoomManager;
         var players = FindObjectsOfType<RoomPlayer>();
         playerCountText.text = string.Format("{0}/{1}", players.Length, manager.maxConnections);
+
+        playerList.text = "";
+        if (RoomPlayer.MyRoomPlayer.isServer)
+        {
+            for(int i=1; i<=players.Length; i++)
+            {
+                playerList.text += "Player[" + i + "]\n";
+            }
+        }
+        else
+        {
+            for (int i = 1; i <= players.Length; i++)
+            {
+                playerList.text += "Player[" + i + "]\n";
+            }
+        }
     }
 
     public void ActiveStartButton()
