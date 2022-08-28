@@ -19,6 +19,8 @@ public class InGameTaggerMover : CharacterMover
 
     InGameRunnerMover target;
 
+    [SerializeField]
+    private TrailRenderer attackEffect;
 
     public override void SetLayerIndex_Hook(int oldLayer, int newLayer)
     {
@@ -39,9 +41,6 @@ public class InGameTaggerMover : CharacterMover
 
         if (hasAuthority)
         {
-            //cam = Camera.main;
-            //cam.transform.SetParent(transform.Find("Body").transform);
-            //cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
             cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
             cam.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
 
@@ -62,24 +61,13 @@ public class InGameTaggerMover : CharacterMover
             CameraRotation();
             CharacterRotation();
             TryAttack();
-            //cam.cullingMask = ~(1 << layer);
-            //isChangeColor = false;
-            /*if (isChangeColor)
-            {
-                cam.cullingMask = ~(1 << layer);
-                isChangeColor = false;
-                Debug.Log("Tagger >> Update >> isChangeColor");
-            }*/
         }
     }
 
     public override void SetLayer(int layerIndex)
     {
-        //cam.cullingMask = ~(1 << layerIndex);
         Debug.Log("Tagger >> SetLayer: "+layerIndex);
         layer = layerIndex;
-        //isChangeColor = true;
-        //Debug.Log("===child(Tagger): " + layerIndex + " => " + cam.cullingMask);
     }
 
     private void TryAttack()
@@ -97,6 +85,7 @@ public class InGameTaggerMover : CharacterMover
     {
         isAttack = true;
         anim.SetTrigger("Attack");
+        attackEffect.enabled = true;
 
         yield return new WaitForSeconds(attackDelayA);
         isSwing = true;
@@ -110,6 +99,7 @@ public class InGameTaggerMover : CharacterMover
         yield return new WaitForSeconds(attackDelay - attackDelayA - attackDelayB);
 
         isAttack = false;
+        attackEffect.enabled = false;
     }
 
     IEnumerator HitCoroutine()
