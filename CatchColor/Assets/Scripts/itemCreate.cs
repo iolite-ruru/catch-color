@@ -30,7 +30,7 @@ public class itemCreate : NetworkBehaviour
     private void CmdItemCreate()
     {
         GameObject itemCre = Instantiate(itemPrefab);
-        itemCre.transform.position = spawnArea.transform.position;
+        itemCre.transform.position = new Vector3(spawnArea.transform.position.x, 0.5f, spawnArea.transform.position.z);
         NetworkServer.Spawn(itemCre);
     }
 

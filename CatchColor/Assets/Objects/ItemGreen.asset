@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ItemGreen
   m_EditorClassIdentifier: 
   itemName: Green
+  itemNameKor: "\uCD08\uB85D"
   itemColor: 1
   itemImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   itemPrefab: {fileID: 3271868724647887468, guid: 21fd9be5edb2c324496add04885d9fac, type: 3}
