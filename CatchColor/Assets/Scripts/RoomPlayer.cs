@@ -29,15 +29,17 @@ public class RoomPlayer : NetworkRoomPlayer
     }
 
 
-    public CharacterMover lobbyPlayerCharacter;
-
     public new void Start()
     {
         base.Start();
         if (isServer)
         {
             SpawnLobbyPlayerCharacter();
+            LobyUIManager.Instance.ActiveStartButton();
         }
+
+
+
         LobyUIManager.Instance.UpdatePlyerCount();
     }
 
