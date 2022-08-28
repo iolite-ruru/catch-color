@@ -29,8 +29,6 @@ public class RoomPlayer : NetworkRoomPlayer
     }
 
 
-    public CharacterMover lobbyPlayerCharacter;
-
     public new void Start()
     {
         base.Start();
