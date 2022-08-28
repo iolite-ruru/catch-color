@@ -62,7 +62,8 @@ public class CharacterMover : NetworkBehaviour
 
     //필요한 컴포넌트
     [SerializeField]
-    protected Camera cam;
+    public Camera cam;
+
     protected Rigidbody myRigid;
     protected BoxCollider myCollider;
 

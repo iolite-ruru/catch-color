@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  range: 3
+  range: 1.5
   itemLayerMask:
     serializedVersion: 2
     m_Bits: 1024
