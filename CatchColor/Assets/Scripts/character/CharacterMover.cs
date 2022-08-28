@@ -114,11 +114,6 @@ public class CharacterMover : NetworkBehaviour
         if (hasAuthority)
         {
             isChangeColor = true;
-            //cam = Camera.main;
-            //cam.transform.SetParent(transform);
-            //cam.transform.localPosition = new Vector3(0f, 1f, 0f);
-            //cam.cullingMask = ~(1 << 7);
-            //cam.cullingMask = ~(1<<LayerMask.NameToLayer("Runnagate_Red"));
             myCollider = GetComponent<BoxCollider>();
             myRigid = GetComponent<Rigidbody>();
 
