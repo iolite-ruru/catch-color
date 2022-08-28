@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
@@ -8,6 +9,9 @@ public class LobyUIManager : MonoBehaviour
 {
     [SerializeField]
     private Text playerList;
+
+    [SerializeField]
+    private Text address;
 
     [SerializeField]
     private Button startButton;
@@ -23,6 +27,21 @@ public class LobyUIManager : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+
+        //string localIP = "Not available, please check your network seetings!";
+        IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
+
+        foreach (IPAddress ip in host.AddressList)
+        {
+            if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+            {
+                address.text = ip.ToString();
+                //localIP = ip.ToString();
+            }
+
+        }
+
+
     }
 
     [SerializeField]

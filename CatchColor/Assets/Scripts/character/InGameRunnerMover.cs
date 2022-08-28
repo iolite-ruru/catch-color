@@ -9,8 +9,10 @@ public class InGameRunnerMover : CharacterMover
     public static int deadCount = 0;
     public static bool isEnd = false;
 
-
     public GameObject[] BodyObjs;
+
+    [SerializeField]
+    public ParticleSystem destroyParticle;
 
     [SyncVar(hook = nameof(SetPlayerState_Hook))]
     public State playerState;
@@ -54,12 +56,11 @@ public class InGameRunnerMover : CharacterMover
 
         if (hasAuthority)
         {
-            //cam = Camera.main;
-            //cam.transform.SetParent(transform.Find("Body").transform);
             cam.transform.localPosition = new Vector3(0f, 2.5f, -1.5f);
             cam.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
 
             playerState = State.Alive;
+            //destroyParticle.Play(); // 테스트
 
             var myRoomPlayer = RoomPlayer.MyRoomPlayer;
             CmdSetPlayerCharacter(myRoomPlayer.playerColor); //나중에 닉네임 설정할때 수정해야함
@@ -90,11 +91,8 @@ public class InGameRunnerMover : CharacterMover
 
     public override void SetLayerIndex_Hook(int oldLayer, int newLayer)
     {
-        //isChangeColor = false;
         Debug.Log("Runner >> Test : "+ newLayer);
-        //gameObject.layer = newLayer;
-        //ChangeLayersRecursively(transform);
-        //transform.GetChild(2).gameObject.layer = newLayer;
+
         foreach(GameObject item in BodyObjs)
         {
             item.layer = newLayer;
@@ -106,8 +104,5 @@ public class InGameRunnerMover : CharacterMover
     {
         Debug.Log("Runner >> SetLayer: " + layerIndex + " => " + gameObject.layer.ToString());
         layer = layerIndex;
-        //isChangeColor = true;
-        //transform.gameObject.layer = layerIndex;
-        
     }
 }
