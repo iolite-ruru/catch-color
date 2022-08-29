@@ -31,7 +31,9 @@ public class LobyUIManager : MonoBehaviour
         //string localIP = "Not available, please check your network seetings!";
         IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
 
-        foreach (IPAddress ip in host.AddressList)
+        address.text = host.AddressList[0].ToString();
+
+        /*foreach (IPAddress ip in host.AddressList)
         {
             if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
             {
@@ -39,7 +41,7 @@ public class LobyUIManager : MonoBehaviour
                 //localIP = ip.ToString();
             }
 
-        }
+        }*/
 
 
     }
