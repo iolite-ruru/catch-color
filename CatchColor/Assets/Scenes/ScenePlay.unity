@@ -268,7 +268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159240797}
-  m_RootOrder: 178
+  m_RootOrder: 165
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4790380
 BoxCollider:
@@ -3047,7 +3047,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159240797}
-  m_RootOrder: 222
+  m_RootOrder: 211
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &343519495
 BoxCollider:
@@ -5267,7 +5267,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 3.6129}
   m_Children: []
   m_Father: {fileID: 1159240797}
-  m_RootOrder: 229
+  m_RootOrder: 215
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &644708960
 BoxCollider:
@@ -9058,6 +9058,7 @@ Transform:
   - {fileID: 943257766}
   - {fileID: 451191638}
   - {fileID: 851078013}
+  - {fileID: 4790379}
   - {fileID: 227336419}
   - {fileID: 302318983}
   - {fileID: 967237037}
@@ -9071,7 +9072,6 @@ Transform:
   - {fileID: 308810881}
   - {fileID: 485008145}
   - {fileID: 1607435849}
-  - {fileID: 4790379}
   - {fileID: 1712523372}
   - {fileID: 715044912}
   - {fileID: 2123912696}
@@ -9104,10 +9104,13 @@ Transform:
   - {fileID: 53936148}
   - {fileID: 457934460}
   - {fileID: 1259927778}
+  - {fileID: 343519494}
   - {fileID: 89717193}
   - {fileID: 1307224641}
   - {fileID: 4512659}
+  - {fileID: 644708959}
   - {fileID: 268285775}
+  - {fileID: 1460767794}
   - {fileID: 625240950}
   - {fileID: 1312705412}
   - {fileID: 1201822606}
@@ -9115,15 +9118,12 @@ Transform:
   - {fileID: 1067182922}
   - {fileID: 847842229}
   - {fileID: 1244266902}
-  - {fileID: 343519494}
   - {fileID: 1310441800}
   - {fileID: 1200017827}
   - {fileID: 2019512762}
   - {fileID: 2001629186}
   - {fileID: 2041762850}
   - {fileID: 1093759663}
-  - {fileID: 644708959}
-  - {fileID: 1460767794}
   - {fileID: 1252963059}
   - {fileID: 411530303}
   - {fileID: 1852199622}
@@ -11466,7 +11466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1631.7, y: -99.001}
+  m_AnchoredPosition: {x: 1600, y: -99.001}
   m_SizeDelta: {x: 535.58, y: 94.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1403431338
@@ -11491,10 +11491,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 65
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 6
     m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -11831,7 +11831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 3.6129}
   m_Children: []
   m_Father: {fileID: 1159240797}
-  m_RootOrder: 230
+  m_RootOrder: 217
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1460767795
 BoxCollider:
@@ -12020,7 +12020,7 @@ GameObject:
   - component: {fileID: 1507799748}
   - component: {fileID: 1507799747}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12058,7 +12058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
