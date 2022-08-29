@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class itemCreate : NetworkBehaviour
 {
-    public GameObject spawnArea;
-    public GameObject itemPrefab;
-    public static bool itemch = true;
+
+    public static itemCreate Instance;
+    public static int destroyNum;
+
+    public GameObject[] spawnArea;
+    public int itemPrefabNumber;
+    public bool itemch = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        CmdItemCreate();
+        destroyNum = itemPrefabNumber;
+        if(RoomPlayer.MyRoomPlayer.isServer) CmdItemCreate();
+        if(Instance == null) Instance = this;
+        
     }
 
     // Update is called once per frame
@@ -29,8 +36,9 @@ public class itemCreate : NetworkBehaviour
     
     private void CmdItemCreate()
     {
-        GameObject itemCre = Instantiate(itemPrefab);
-        itemCre.transform.position = new Vector3(spawnArea.transform.position.x, 0.5f, spawnArea.transform.position.z);
+        Debug.Log(itemPrefabNumber+"에서 생성");
+        GameObject itemCre = Instantiate(RoomManager.singleton.spawnPrefabs[destroyNum]);
+        itemCre.transform.position = new Vector3(spawnArea[destroyNum-1].transform.position.x, 0.5f, spawnArea[destroyNum - 1].transform.position.z);
         NetworkServer.Spawn(itemCre);
     }
 
