@@ -20,6 +20,7 @@ public class InGameRunnerMover : CharacterMover
     {
         playerState = state;
         deadCount++;
+        RunnerCount.Instance.SetRunnerCounter(deadCount + " / " + FindObjectsOfType<InGameRunnerMover>().Length);
         if (hasAuthority)
         {
             isMovable = false;
@@ -49,6 +50,8 @@ public class InGameRunnerMover : CharacterMover
 
     public override void Start()
     {
+        RunnerCount.Instance.SetRunnerCounter(deadCount + " / " + FindObjectsOfType<InGameRunnerMover>().Length);
+
         renderer = transform.Find("Body").GetComponent<SkinnedMeshRenderer>();
         renderer.material.color = PlayerColor.GetColor(playerColor);
 
