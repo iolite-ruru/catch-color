@@ -20,7 +20,7 @@ public class InGameRunnerMover : CharacterMover
     {
         playerState = state;
         deadCount++;
-        RunnerCount.Instance.SetRunnerCounter(deadCount + " / " + FindObjectsOfType<InGameRunnerMover>().Length);
+        RunnerCount.Instance.SetRunnerCounter("남은 도망자: "+(FindObjectsOfType<InGameRunnerMover>().Length-deadCount));
         if (hasAuthority)
         {
             isMovable = false;
@@ -50,7 +50,8 @@ public class InGameRunnerMover : CharacterMover
 
     public override void Start()
     {
-        RunnerCount.Instance.SetRunnerCounter(deadCount + " / " + FindObjectsOfType<InGameRunnerMover>().Length);
+        RunnerCount.Instance.SetRunnerCounter("남은 도망자: " + (FindObjectsOfType<InGameRunnerMover>().Length - deadCount));
+
 
         renderer = transform.Find("Body").GetComponent<SkinnedMeshRenderer>();
         renderer.material.color = PlayerColor.GetColor(playerColor);
