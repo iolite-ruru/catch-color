@@ -9,6 +9,8 @@ public class CreateRoom : MonoBehaviour
     private GameObject mainUI;
     [SerializeField]
     private GameObject clientUI;
+    [SerializeField]
+    private GameObject howToPlayeUI;
 
     [SerializeField]
     private InputField IpInputField;
@@ -39,4 +41,18 @@ public class CreateRoom : MonoBehaviour
         manager.StartClient();
 
     }
+
+    //게임 방법
+    public void OpenHowToPlayUI()
+    {
+        mainUI.SetActive(false);
+        howToPlayeUI.SetActive(true);
+    }
+    public void GoBackMainUI()
+    {
+        mainUI.SetActive(true);
+        howToPlayeUI.SetActive(false);
+        clientUI.SetActive(false);
+    }
+
 }

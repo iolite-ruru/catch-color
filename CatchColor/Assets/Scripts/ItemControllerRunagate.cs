@@ -47,6 +47,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         if (idx == 0) color = MyColor.Red;
         else if (idx == 1) color = MyColor.Green;
         else color = MyColor.Blue;
+        //Debug.Log(color + " »πµÊ«‘!");
         CharacterMover.MyPlayer.CmdSetColor(color);
     }
 
@@ -71,23 +72,40 @@ public class ItemControllerRunagate : NetworkBehaviour
                 //Debug.Log(itemName + " »πµÊ«‘");
 
                 textColor.text = itemName;
-                if (itemName.Equals("ª°∞≠")) SetColor(0);
-                else if (itemName.Equals("√ ∑œ")) SetColor(1);
-                else if (itemName.Equals("∆ƒ∂˚")) SetColor(2);
+                if (itemName.Equals("Red")) SetColor(0);
+                else if (itemName.Equals("Green")) SetColor(1);
+                else if (itemName.Equals("Blue")) SetColor(2);
 
-                CmdDestroyItem(hitInfo.transform.gameObject);
-                
+                if(RoomPlayer.MyRoomPlayer.isClient) CmdDestroyItem(hitInfo.transform.gameObject);
+                else DestroyItem(hitInfo.transform.gameObject);
                 SetItemInfo(false);
             }
         }
     }
 
+    [Command]
     public void CmdDestroyItem(GameObject obj)
     {
         if (!obj) return;
-        itemCreate.itemch = false;
+        Debug.Log(itemCreate.Instance.itemPrefabNumber + "ø°º≠ ªË¡¶");
+        itemCreate.Instance.itemch = false;
+        if (obj.gameObject.name == "item_red(Clone)") itemCreate.destroyNum = 1;
+        else if (obj.gameObject.name == "item_green(Clone)") itemCreate.destroyNum = 2;
+        else if (obj.gameObject.name == "item_blue(Clone)") itemCreate.destroyNum = 3;
         NetworkServer.Destroy(obj);
     }
+
+    public void DestroyItem(GameObject obj)
+    {
+        if (!obj) return;
+        Debug.Log(itemCreate.Instance.itemPrefabNumber + "ø°º≠ ªË¡¶");
+        itemCreate.Instance.itemch = false;
+        if (obj.gameObject.name == "item_red(Clone)") itemCreate.destroyNum = 1;
+        else if (obj.gameObject.name == "item_green(Clone)") itemCreate.destroyNum = 2;
+        else if (obj.gameObject.name == "item_blue(Clone)") itemCreate.destroyNum = 3;
+        NetworkServer.Destroy(obj);
+    }
+
     private void CheckItem()
     {
         if (Physics.Raycast(transform.position, transform.forward, out hitInfo, range, itemLayerMask))
