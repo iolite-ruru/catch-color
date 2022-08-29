@@ -28,6 +28,12 @@ public class CharacterMover : NetworkBehaviour
         }
     }
 
+    //소리
+    private AudioSource audio;
+    public AudioClip soundJump;
+    public AudioClip soundWalk;
+    public AudioClip soundAttack;
+
     public Animator anim;
 
     //스피드 조정 변수
@@ -104,13 +110,15 @@ public class CharacterMover : NetworkBehaviour
         Debug.Log("===Parent");
     }
 
+
+
     public virtual void Start()
     {
         //Cursor.visible = false;
         //Cursor.lockState = CursorLockMode.Confined;
 
         //renderer = gameObject.GetComponent<MeshRenderer>();
-
+        this.audio = this.gameObject.AddComponent<AudioSource>();
 
         if (hasAuthority)
         {
@@ -154,6 +162,7 @@ public class CharacterMover : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             Jump();
+            PlaySound("JUMP");
         }
     }
     protected void Jump()
@@ -204,6 +213,7 @@ public class CharacterMover : NetworkBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * currentSpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.smoothDeltaTime);
+        //PlaySound("WALK");
     }
     protected void MoveCheck()
     {
@@ -242,5 +252,23 @@ public class CharacterMover : NetworkBehaviour
     protected void CmdSetPlayerCharacter(MyColor color)
     {
         playerColor = color;
+    }
+
+    public void PlaySound(string action)
+    {
+        switch (action)
+        {
+            case "JUMP":
+                audio.clip = soundJump;
+                break;
+            case "WALK":
+                audio.clip = soundWalk;
+                break;
+            case "ATTACK":
+                audio.clip = soundAttack;
+                break;
+        }
+
+        audio.Play();
     }
 }

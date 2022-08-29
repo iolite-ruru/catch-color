@@ -6368,6 +6368,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  soundJump: {fileID: 8300000, guid: 825529b37ac9e8b40817f08d07cbf7cf, type: 3}
+  soundWalk: {fileID: 8300000, guid: 420e319b1be14cf4f9a88d4f61cf4f6f, type: 3}
+  soundAttack: {fileID: 8300000, guid: ab59ec5d2dfbf8c44936b4e745dfbabc, type: 3}
   anim: {fileID: 6533973043622274014}
   walkSpeed: 3
   runSpeed: 6
@@ -6406,6 +6409,7 @@ MonoBehaviour:
   textItemInfo: {fileID: 6227418410714123560}
   textColor: {fileID: 6227418409522779600}
   textRole: {fileID: 1320476042414146160}
+  getItem: {fileID: 8300000, guid: 6d48a797cfa6b4645b3b66f32ef2d06f, type: 3}
 --- !u!65 &6533973043622274015
 BoxCollider:
   m_ObjectHideFlags: 0
