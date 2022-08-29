@@ -23,7 +23,7 @@ public class InGameRunnerMover : CharacterMover
         if (hasAuthority)
         {
             isMovable = false;
-            //cam.transform.position = new Vector3(0f, 20f, -10f);
+            cam.transform.position = new Vector3(0f, 20f, -10f);
             cam.transform.rotation = Quaternion.Euler(50f, 0f, 0f);
         }
         if (deadCount == FindObjectsOfType<InGameRunnerMover>().Length)

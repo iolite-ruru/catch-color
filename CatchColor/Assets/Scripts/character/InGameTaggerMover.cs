@@ -150,4 +150,10 @@ public class InGameTaggerMover : CharacterMover
         obj.playerState = State.Dead;
         obj.RpcRendererFalse();
     }
+
+    public override void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    {
+        base.SetPlayerColor_Hook(oldColor, newColor);
+        TaggerColor.Instance.SetGogglesColor();
+    }
 }
