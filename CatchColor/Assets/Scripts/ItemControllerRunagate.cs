@@ -25,8 +25,14 @@ public class ItemControllerRunagate : NetworkBehaviour
     [SerializeField]
     private Text textRole;
 
+    private AudioSource audio;
+    public AudioClip getItem;
+
     private void Start()
     {
+        this.audio = this.gameObject.AddComponent<AudioSource>();
+        audio.clip = getItem;
+
         if (!hasAuthority)
         {
             textItemInfo.gameObject.SetActive(false);
@@ -52,6 +58,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         else if (idx == 1) color = MyColor.Green;
         else color = MyColor.Blue;
         //Debug.Log(color + " »πµÊ«‘!");
+        audio.Play();
         CharacterMover.MyPlayer.CmdSetColor(color);
     }
 
