@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 4529691457018084894}
   - component: {fileID: 1320476042414146160}
   m_Layer: 6
-  m_Name: TextColor (1)
+  m_Name: TextRole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6405,6 +6405,7 @@ MonoBehaviour:
     m_Bits: 1024
   textItemInfo: {fileID: 6227418410714123560}
   textColor: {fileID: 6227418409522779600}
+  textRole: {fileID: 1320476042414146160}
 --- !u!65 &6533973043622274015
 BoxCollider:
   m_ObjectHideFlags: 0

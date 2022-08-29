@@ -22,12 +22,16 @@ public class ItemControllerRunagate : NetworkBehaviour
     private Text textItemInfo;
     [SerializeField]
     private Text textColor;
+    [SerializeField]
+    private Text textRole;
 
     private void Start()
     {
         if (!hasAuthority)
         {
+            textItemInfo.gameObject.SetActive(false);
             textColor.gameObject.SetActive(false);
+            textRole.gameObject.SetActive(false);
         }
     }
     void Update()
