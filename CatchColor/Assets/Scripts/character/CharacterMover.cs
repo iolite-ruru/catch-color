@@ -89,6 +89,7 @@ public class CharacterMover : NetworkBehaviour
             renderer = gameObject.GetComponent<Renderer>();
         }
         renderer.material.color = PlayerColor.GetColor(newColor);
+        Debug.Log(newColor+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         SetLayer(PlayerColor.GetColorInt(newColor)+7);
     }
 

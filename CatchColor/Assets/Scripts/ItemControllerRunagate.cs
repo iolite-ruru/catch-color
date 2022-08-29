@@ -47,6 +47,7 @@ public class ItemControllerRunagate : NetworkBehaviour
         if (idx == 0) color = MyColor.Red;
         else if (idx == 1) color = MyColor.Green;
         else color = MyColor.Blue;
+        //Debug.Log(color + " È¹µæÇÔ!");
         CharacterMover.MyPlayer.CmdSetColor(color);
     }
 
@@ -71,9 +72,9 @@ public class ItemControllerRunagate : NetworkBehaviour
                 //Debug.Log(itemName + " È¹µæÇÔ");
 
                 textColor.text = itemName;
-                if (itemName.Equals("»¡°­")) SetColor(0);
-                else if (itemName.Equals("ÃÊ·Ï")) SetColor(1);
-                else if (itemName.Equals("ÆÄ¶û")) SetColor(2);
+                if (itemName.Equals("Red")) SetColor(0);
+                else if (itemName.Equals("Green")) SetColor(1);
+                else if (itemName.Equals("Blue")) SetColor(2);
 
                 CmdDestroyItem(hitInfo.transform.gameObject);
                 
