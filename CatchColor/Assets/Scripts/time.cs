@@ -37,7 +37,7 @@ public class time : NetworkBehaviour
                 NetworkManager.singleton.StopHost();
             }
         }
-        NextTxt2.text = "자동으로  " + Mathf.Round(waitTime) + "초 뒤 화면 전환됩니다.";
+        NextTxt2.text = "자동으로  <color=red>" + Mathf.Round(waitTime) + "초</color> 뒤 타이틀 화면으로 전환됩니다.";
     }
     public GameObject NextTxt;
     public Text NextTxt2;
