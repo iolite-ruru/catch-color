@@ -82,14 +82,14 @@ public class CharacterMover : NetworkBehaviour
 
     [SyncVar(hook =nameof(SetPlayerColor_Hook))]
     public MyColor playerColor;
-    public void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
+    public virtual void SetPlayerColor_Hook(MyColor oldColor, MyColor newColor)
     {
         if (renderer == null)
         {
             renderer = gameObject.GetComponent<Renderer>();
         }
         renderer.material.color = PlayerColor.GetColor(newColor);
-        Debug.Log(newColor+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //Debug.Log(newColor+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         SetLayer(PlayerColor.GetColorInt(newColor)+7);
     }
 
