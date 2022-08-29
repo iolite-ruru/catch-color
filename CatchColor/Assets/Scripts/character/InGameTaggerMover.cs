@@ -117,7 +117,7 @@ public class InGameTaggerMover : CharacterMover
                 attackParticle.Play();
 
                 Debug.Log("==Ãæµ¹: " + hitInfo.transform.name);
-
+                PlaySound("ATTACK");
                 TellServerToDestroyObject(target);
             }
             yield return null;
