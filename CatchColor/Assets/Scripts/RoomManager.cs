@@ -66,7 +66,7 @@ public class RoomManager : NetworkRoomManager {
             }
             else
             {
-                gamePlayer = Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity); //도망자 생성
+                gamePlayer = Instantiate(playerPrefab, new Vector3(10, 1, 15), Quaternion.identity); //도망자 생성
             }
             
             //gamePlayer = Instantiate(spawnPrefabs[1], new Vector3(0, 1, 0), Quaternion.identity); //술래 생성

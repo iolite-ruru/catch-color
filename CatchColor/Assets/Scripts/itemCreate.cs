@@ -27,7 +27,7 @@ public class itemCreate : NetworkBehaviour
     {
         if (itemch == false)
         {
-            Invoke("CmdItemCreate", 1);
+            Invoke("CmdItemCreate", 7);
             itemch = true;
 
         }
