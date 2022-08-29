@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 1673452971407517278}
   - component: {fileID: 9124293262814076184}
   m_Layer: 6
-  m_Name: TextColor (1)
+  m_Name: TextRole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17065,7 +17065,7 @@ MonoBehaviour:
   cameraRatationLimit: 20
   cam: {fileID: 6946651282973697801}
   renderer: {fileID: 0}
-  layer: 6
+  layer: 7
   playerColor: 0
   range: 2
   damage: 3
@@ -17094,6 +17094,7 @@ MonoBehaviour:
     m_Bits: 1024
   textItemInfo: {fileID: 5847782932575657474}
   textColor: {fileID: 5847782933786115601}
+  textRole: {fileID: 9124293262814076184}
 --- !u!65 &7843775079673757390
 BoxCollider:
   m_ObjectHideFlags: 0
