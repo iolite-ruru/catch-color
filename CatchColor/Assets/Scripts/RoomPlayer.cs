@@ -54,7 +54,7 @@ public class RoomPlayer : NetworkRoomPlayer
     private void SpawnLobbyPlayerCharacter()
     {
 
-        int idx = Random.Range(0, 3);
+        int idx =0;//= Random.Range(0, 3);
         MyColor color;
         if (idx == 0) color = MyColor.Red;
         else if (idx == 1) color = MyColor.Green;

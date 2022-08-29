@@ -17065,7 +17065,7 @@ MonoBehaviour:
   cameraRatationLimit: 20
   cam: {fileID: 6946651282973697801}
   renderer: {fileID: 0}
-  layer: 6
+  layer: 7
   playerColor: 0
   range: 2
   damage: 3
