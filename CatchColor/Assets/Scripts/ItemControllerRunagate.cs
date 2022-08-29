@@ -6,6 +6,8 @@ using Mirror;
 
 public class ItemControllerRunagate : NetworkBehaviour
 {
+    private AudioSource audio;
+    public AudioClip sound;
     //[SerializeField]
     //private CharacterMover player;
 
@@ -25,6 +27,8 @@ public class ItemControllerRunagate : NetworkBehaviour
 
     private void Start()
     {
+        this.audio = this.gameObject.AddComponent<AudioSource>();
+        this.audio.clip = this.sound;
         if (!hasAuthority)
         {
             textColor.gameObject.SetActive(false);
